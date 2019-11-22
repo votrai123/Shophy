@@ -76,5 +76,5 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
     });
 });
 ahsdhjsad hhhhhhhhhhhhhhhhhh
-\ỷtfhg
+ggggggggggggggggg
 jugjgu
