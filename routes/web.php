@@ -75,6 +75,6 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
         Route::post('addcategorys','Pages\\Auth\\AdminController\\AdminCategorys@postAddcategory');
     });
 });
-ahsdhjsad
+ahsdhjsad hhhhhhhhhhhhhhhhhh
 \ỷtfhg
 jugjgu
