@@ -76,5 +76,9 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
     });
 });
 ahsdhjsad hhhhhhhhhhhhhhhhhh
+<<<<<<< HEAD
 ggggggggggggggggg  chinh sua trong master
+=======
+ggggggggggggggggg thay doi trong nhanh moi
+>>>>>>> nhanhmoi
 jugjgu
