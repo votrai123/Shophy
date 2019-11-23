@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                 <!-- table container -->
-                <a href="add-product.html" class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
+                <a href="/admin/products/addproducts" class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
                 <button class="btn btn-primary btn-block text-uppercase">
                     Delete selected products
                 </button>

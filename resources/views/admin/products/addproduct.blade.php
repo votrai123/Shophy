@@ -11,7 +11,7 @@
             </div>
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="" class="tm-edit-product-form">
+                <form action="" method="post" class="tm-edit-product-form">
                   <div class="form-group mb-3">
                     <label
                       for="name"
@@ -48,10 +48,10 @@
                       class="custom-select tm-select-accounts"
                       id="category"
                     >
-                      <option selected>Select category</option>
-                      <option value="1">New Arrival</option>
-                      <option value="2">Most Popular</option>
-                      <option value="3">Trending</option>
+                      <!-- <option selected>Select category</option> -->
+                      @foreach($categorys as $cateo)
+                      <option value="{{$cateo->id}}" name="category">{{$cateo->name}}</option>
+                      @endforeach
                     </select>
                   </div>
                   <div class="form-group mb-3">
