@@ -41,14 +41,13 @@
                       for="description"
                       >Description</label
                     >
-                    <input                    
+                    <textarea                    
                       class="form-control validate tm-small"
                       rows="5"
-                      type="text"
                       name="descriptions"
                       required
                       placeholder="Description"
-                    >
+                    ></textarea>
                   </div>
               </div>
               <!-- <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">

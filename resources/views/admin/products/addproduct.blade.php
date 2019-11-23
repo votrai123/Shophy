@@ -19,9 +19,10 @@
                     </label>
                     <input
                       id="name"
-                      name="name"
+                      name="productname"
                       type="text"
                       class="form-control validate"
+                      placeholder="Product Name"
                       required
                     />
                   </div>
@@ -34,6 +35,8 @@
                       class="form-control validate"
                       rows="3"
                       required
+                      name="descriptions"
+                      placeholder="Description"
                     ></textarea>
                   </div>
                   <div class="form-group mb-3">
@@ -51,29 +54,44 @@
                       <option value="3">Trending</option>
                     </select>
                   </div>
+                  <div class="form-group mb-3">
+                    <label
+                      for="unit"
+                      >Unit</label
+                    >
+                    <input
+                      class="form-control validate"
+                      rows="3"
+                      required
+                      name="unit"
+                      placeholder="Unit"
+                    >
+                  </div>
                   <div class="row">
                       <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
                             for="expire_date"
-                            >Expire Date
+                            >Unit Price
                           </label>
                           <input
-                            id="expire_date"
-                            name="expire_date"
+                            id="unit_price"
+                            name="unit_price"
                             type="text"
                             class="form-control validate"
                             data-large-mode="true"
+                            placeholder="0$"
                           />
                         </div>
                         <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
                             for="stock"
-                            >Units In Stock
+                            >Unit Promotion
                           </label>
                           <input
-                            id="stock"
-                            name="stock"
+                            id="unit_promotion"
+                            name="unit_promotion"
                             type="text"
+                            placeholder="0$"
                             class="form-control validate"
                             required
                           />

@@ -51,13 +51,13 @@ Route::get('admin/adminpage', [
     'uses'=>'Pages\\Auth\\HomeAdminController@getAdminPage']);
 Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
     Route::group(['prefix' => 'products', 'as'=>'products'], function () {
-        Route::get('listproducts', [ 
-            'as'=> 'listproducts',
-            'uses'=>'Pages\\Auth\\AdminController\\AdminProducts@getListproduct']);
+        Route::get('listproducts','Pages\\Auth\\AdminController\\AdminProducts@getListproduct');
 
         Route::get('editproducts','Pages\\Auth\\AdminController\\AdminProducts@getEditproduct');
+        Route::post('editproducts','Pages\\Auth\\AdminController\\AdminProducts@postEditproduct');
 
-        Route::get('addproducts','Pages\\Auth\\AddProductController@getAddproduct');
+        Route::get('addproducts','Pages\\Auth\\AdminController\\AdminProducts@getAddproduct');
+        Route::post('addproducts','Pages\\Auth\\AdminController\\AdminProducts@postAddproduct');
     });
     Route::group(['prefix' => 'users'], function () {
         Route::get('listusers','Pages\\Auth\\ListUserController@getListuser');

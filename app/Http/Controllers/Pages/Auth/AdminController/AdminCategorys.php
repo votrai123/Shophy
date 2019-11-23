@@ -58,3 +58,4 @@ class AdminCategorys extends Controller
         DB::table('type_products')->where('id', '=', $id)->delete();
     }
 }
+ 
