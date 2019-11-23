@@ -68,17 +68,12 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
     });
     Route::group(['prefix' => 'categorys'], function () {
 
-        Route::get('editcategorys','Pages\\Auth\\AdminController\\AdminCategorys@getEditcategory');
-        
-        Route::get('addcategorys','Pages\\Auth\\AdminController\\AdminCategorys@getAddcategory');
+        Route::get('editcategorys/{id}','Pages\\Auth\\AdminController\\AdminCategorys@getEditcategory');
+        Route::post('editcategorys/{id}','Pages\\Auth\\AdminController\\AdminCategorys@postEditcategory');
 
+        Route::get('addcategorys','Pages\\Auth\\AdminController\\AdminCategorys@getAddcategory');
         Route::post('addcategorys','Pages\\Auth\\AdminController\\AdminCategorys@postAddcategory');
+
+        Route::post('delcategorys/{id}', 'Pages\\Auth\\AdminController\\AdminCategorys@postDelcategory');
     });
 });
-ahsdhjsad hhhhhhhhhhhhhhhhhh
-<<<<<<< HEAD
-ggggggggggggggggg  chinh sua trong master
-=======
-ggggggggggggggggg thay doi trong nhanh moi
->>>>>>> nhanhmoi
-jugjgu

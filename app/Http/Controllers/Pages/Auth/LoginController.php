@@ -36,20 +36,21 @@ class LoginController extends AuthController
         $credentials = array('email' =>$req->email ,'password' =>$req->password );
         // echo $req->email ;
         // echo $req->password ;
+        // dd('klasmdflkmsadflkm');
         if(Auth::attempt(['email' => $req->email, 'password' => $req->password])){
             // echo 'ok';
-            $user = Auth::user();
+            // $user = Auth::user();
 
-            $name = $user->full_name; //or Auth::user()->id;
+            // $name = $user->full_name; //or Auth::user()->id;
             // $user_email = $user->email; // or Auth::user()->email;
-            dd($name);
+            
 
             // return redirect()->intended('home');
-            // return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
+            return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
         }else {
             // echo 'error';
-            return redirect()->intended('login');
-            // return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
+            // return redirect()->intended('login');
+            return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
         }
     }
 }

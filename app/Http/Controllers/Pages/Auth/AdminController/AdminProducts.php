@@ -16,4 +16,8 @@ class AdminProducts extends Controller
     public function getEditproduct() {
         return view('admin.products.editproduct');
     }
+    public function deletecate(Request $req) {
+        $dcategorys = ProductType::where('id',$req->id)->first();
+        return view('admin.products.listproduct',compact('dcategorys'));
+    }
 }

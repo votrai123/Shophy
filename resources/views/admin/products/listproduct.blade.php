@@ -169,14 +169,35 @@
                 <tbody>
                     @foreach($categorys as $cate)
                   <tr>
-                    <td class="tm-product-name">{{$cate->name}}</td>
+                    <td><a  class="tm-product-name" href="/admin/categorys/editcategorys/{{$cate->id}}">{{$cate->name}} </a></td>
                     <td class="text-center">
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                      <a href="#"  class="tm-product-delete-link">
+                        <i class="far fa-trash-alt tm-product-delete-icon" data-toggle="modal" onclick='setid({{$cate->id}})' data-target="#myModal"></i>
                       </a>
                     </td>
                   </tr>
                   @endforeach
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="myModal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thông báo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có muốn xóa không?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="deletecate"class="btn btn-primary"  onclick="deletecate()">YES</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO and Close</button>
+      </div>
+    </div>
+  </div>
+</div>
                   <!-- <tr>
                     <td class="tm-product-name">Product Category 2</td>
                     <td class="text-center">

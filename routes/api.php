@@ -19,7 +19,13 @@ Route::get('validateEmail/{email}',function($email){
     ->count();
     return $data;
 });
-
+Route::post('deletecate/{id}', function ($id) {
+    $data = DB::table('type_product')
+    ->where('id', '=', $id)
+    ->delete();
+    dd($data);
+    // return $data;
+});
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

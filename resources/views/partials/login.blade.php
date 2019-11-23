@@ -18,11 +18,12 @@
       <button>create</button>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form> -->
-    @if (Session::has('flag')) 
-    <div class="{{Session::get('flag')}} product-title">{{Session::get('message')}}</div>
-    @endif
+    
     <form action="{{route('dang-nhap')}}" method="post" class="login-form">
    
+    @if (Session::has('flag')) 
+    <div class="{{Session::get('flag')}}">{{Session::get('message')}}</div>
+    @endif
       <input type="hidden" name="_token" value="{{csrf_token()}}">
       <input type="text email" name="email" placeholder="email">
       <input type="password" name="password" placeholder="password">
