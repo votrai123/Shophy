@@ -50,6 +50,8 @@ class AdminCategorys extends Controller
         $category = new ProductType;
         $category -> name = $req ->namecategory;
         $category -> description = $req -> descriptions;
+        // dd ($req -> namecategory);
+        // dd ($req -> descriptions);
         $category -> save();
         return redirect('admin/categorys/addcategorys')->with('thongbao','Đã thêm thành công');
     }

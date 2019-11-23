@@ -14,4 +14,8 @@ class Products extends Model
     public function images_product() {
         return $this->hasMany('App\Models\ImagesProduct','id_image','id');
     }   
+    
+    protected $fillable = [
+        'ProName'
+    ];
 }

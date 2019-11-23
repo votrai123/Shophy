@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProductType;
 use App\Models\Products;
+// use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class AdminProducts extends Controller
 {
@@ -23,27 +25,81 @@ class AdminProducts extends Controller
         return view('admin.products.addproduct',compact('categorys'));
     }
     public function postAddproduct(Request $req) {
-        $this->validate($req,
-        [
-            'productname' => 'required|ProName',
-            'descriptions' => 'required|min:3|max:255'
-        ],
-        [
-            'productname.required' => 'Chưa nhập tên thể loại thì lấy gì add',
-            'descriptions.required' => 'Chưa nhập tên thể loại thì lấy gì add',
-            'descriptions.min' => 'Ít nhất là 3 kí tự,Nhiều nhất là 255 kí tự',
-            'descriptions.max' => 'Nhiều nhất là 255 kí tự'
-        ]);
+        // $this->validate($req,
+        // [
+            // 'productname'=>'required|productname|unique:products,ProName',
+            // 'descriptions' => 'required|min:3|max:255',
+            // 'img' => 'required'
+        // ],
+        // [
+            // 'productname.required' => 'Chưa nhập tên sản phẩm thì lấy gì add',
+            // 'descriptions.required' => 'Chưa nhập tên thể loại thì lấy gì add',
+            // 'descriptions.min' => 'Mô tả sản phẩm Ít nhất là 3 kí tự,Nhiều nhất là 255 kí tự',
+            // 'descriptions.max' => 'Mô tả sản phẩm nhiều nhất là 255 kí tự'
+        // ]);
 
-        $product = new Products;
-        $product -> ProName = $req -> productname;
-        $product -> description = $req -> descriptions;
-        $product -> id_type = $req -> category;
-        $product -> ProUnit = $req -> unit;
-        $product -> unit_price = $req -> unit_price;
-        $product -> promotion_price = $req -> unit_promotion;
-        $product -> save();
-        return redirect('admin/products/addproducts')->with('thongbao','Đã thêm thành công');
+        // $product = new Products;
+        // $product -> ProName = $req -> productname;
+        // $product -> description = $req -> descriptions;
+        // $product -> id_type = $req -> $_POST['category'];
+        // $product -> ProUnit = $req -> unit;
+        // $product -> unit_price = $req -> unit_price;
+        // $product -> promotion_price = $req -> unit_promotion;
+        echo '1';
+       
+        // kiểm tra có files sẽ xử lý
+		if($req->hasFile('img')) {
+            echo '10';
+			$allowedfileExtension=['jpg','png'];
+			$files = $req->file('img');
+            // flag xem có thực hiện lưu DB không. Mặc định là có
+            $exe_flg = true;
+            echo '2';
+			// kiểm tra tất cả các files xem có đuôi mở rộng đúng không
+			foreach($files as $file) {
+				$extension = $file->getClientOriginalExtension();
+				$check=in_array($extension,$allowedfileExtension);
+                echo '3';
+				if(!$check) {
+                    // nếu có file nào không đúng đuôi mở rộng thì đổi flag thành false
+					$exe_flg = false;
+                    break;
+                    echo '4';
+				}
+            } 
+            echo '5';
+			// nếu không có file nào vi phạm validate thì tiến hành lưu DB
+			if($exe_flg) {
+                echo '6';
+                // lưu product
+				$products= Product::create($request->all());
+                // duyệt từng ảnh và thực hiện lưu
+				foreach ($request->photos as $photo) {
+                    $filename = $photo->store('img');
+                    echo '7';
+					// ProductDetails::create([
+					// 	'product_id' => $products->id,
+					// 	'filename' => $filename
+                    // ]);
+                    echo $filename;
+                }
+            }
+        }
+        // $product -> ProImage = $req -> hasFile('img');
+        // echo $req -> productname;
+        // echo $req -> descriptions;
+        // echo $req -> $selected_val; 
+
+        // if (isset($_POST['category']))
+        // {
+        //     $category = $_POST['category'];
+        //     echo "$category";
+        // }
+        // echo $req -> unit;
+        // echo $req -> unit_price;
+        // echo $req -> unit_promotion;
+        // $product -> save();
+        // return redirect('admin/products/addproducts')->with('thongbao','Đã thêm thành công');
     }
     public function deletecate(Request $req) {
         $dcategorys = ProductType::where('id',$req->id)->first();

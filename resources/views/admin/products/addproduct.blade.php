@@ -8,10 +8,21 @@
               <div class="col-12">
                 <h2 class="tm-block-title d-inline-block">Add Product</h2>
               </div>
+              @if(count($errors)>0)
+              <div class="alert alert-danger">
+              @foreach($errors->all() as $err)
+                {{$err}} <br>
+              @endforeach
+              </div>
+              @endif
+              @if(session('thongbao'))
+              <div class="alert alert-success">{{session('thongbao')}}</div>
+              @endif
             </div>
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="" method="post" class="tm-edit-product-form">
+                <form action="{{asset('admin/products/addproducts')}}"  method="post" class="tm-edit-product-form">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
                   <div class="form-group mb-3">
                     <label
                       for="name"
@@ -47,12 +58,13 @@
                     <select
                       class="custom-select tm-select-accounts"
                       id="category"
+                      name="category"
                     >
-                      <!-- <option selected>Select category</option> -->
                       @foreach($categorys as $cateo)
-                      <option value="{{$cateo->id}}" name="category">{{$cateo->name}}</option>
+                      <option value="{{$cateo->id}}" name="category" >{{$cateo->name}}</option>
                       @endforeach
                     </select>
+                    <!-- <input type="text" name="category"> -->
                   </div>
                   <div class="form-group mb-3">
                     <label
@@ -107,7 +119,7 @@
                   ></i>
                 </div>
                 <div class="custom-file mt-3 mb-3">
-                  <input id="fileInput" type="file" style="display:none;" />
+                  <input id="fileInput" type="file" name="img" style="display:none;" />
                   <input
                     type="button"
                     class="btn btn-primary btn-block mx-auto"
