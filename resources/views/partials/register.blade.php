@@ -23,13 +23,13 @@
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
 					<input class="text" type="text" name="Fullname" placeholder="Fullname" required="">
 					<input class="text email" type="text" name="Address" placeholder="Address" required="">
-					<input class="text" type="text" name="Phone" placeholder="Phone" required="">
+					<input class="text" type="text" id="iphone"name="Phone" placeholder="Phone" required>
 					<input class="text email" type="date" name="bday">
 					<input id='regEmail' class="text " type="email" name="email" placeholder="Email" required>
 					<div id="existedEmail" style="color:red; display:none">Email này đã được dùng</div>
 					<input id='regPassword' class="text email" type="password" name="password" placeholder="Password" required>
 					<div id="errorLablePassword" style="color:red; display:none">Password phải lớn hơn 6 kí tự </div>
-					<input class="text" type="password" name="re_password" placeholder="Confirm Password" required="">
+					<input  id="rpass" class="text" type="password" name="re_password" placeholder="Confirm Password" required>
 					<!-- <div class="wthree-text">
 						<label class="anim">
 							<input type="checkbox" class="checkbox" required="">

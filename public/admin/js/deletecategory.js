@@ -19,3 +19,14 @@ function deletecate() {
 function setid(id) {
     selected_id=id;
 }
+$('#unit_promotion').on('input', function (e) {
+    var inputpromotion = $('#unit_promotion').val();
+    var inputunitprice = $('#unit_price').val();
+    if (inputpromotion > inputunitprice) {
+        $('#errorLabprice').show();
+    }
+    else {
+        $('#errorLabprice').hide();
+    }
+
+});

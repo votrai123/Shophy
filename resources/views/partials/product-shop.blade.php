@@ -145,7 +145,7 @@
                             <li class="product-item">
                                     <div class="product-thumb clearfix">
                                         <a href="{{route('detailproduct',$plist->id)}}">
-                                            <img src="{{$plist->ProImage}}" height="218px" alt="image">
+                                            <img src="{{asset($plist->ProImage)}}" height="218px" alt="image">
                                         </a>
                                         @if($plist->promotion_price!=0)
                                         <span class="new sale">Sale</span>

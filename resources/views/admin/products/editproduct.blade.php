@@ -8,10 +8,21 @@
               <div class="col-12">
                 <h2 class="tm-block-title d-inline-block">Edit Product</h2>
               </div>
+              @if(count($errors)>0)
+              <div class="alert alert-danger">
+              @foreach($errors->all() as $err)
+                {{$err}} <br>
+              @endforeach
+              </div>
+              @endif
+              @if(session('thongbao'))
+              <div class="alert alert-success">{{session('thongbao')}}</div>
+              @endif
             </div>
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="" method="post" class="tm-edit-product-form">
+                <form action="admin/products/editproducts" enctype="multipart/form-data"  method="post" class="tm-edit-product-form">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
                   <div class="form-group mb-3">
                     <label
                       for="name"
@@ -19,10 +30,12 @@
                     </label>
                     <input
                       id="name"
-                      name="name"
+                      name="productname"
                       type="text"
-                      value="Lorem Ipsum Product"
                       class="form-control validate"
+                      placeholder="Product Name"
+                      value="{{$products->ProName}}"
+                      required
                     />
                   </div>
                   <div class="form-group mb-3">
@@ -30,11 +43,13 @@
                       for="description"
                       >Description</label
                     >
-                    <textarea                    
-                      class="form-control validate tm-small"
-                      rows="5"
+                    <textarea
+                      class="form-control validate"
+                      rows="3"
                       required
-                    >Lorem ipsum dolor amet gentrify glossier locavore messenger bag chillwave hashtag irony migas wolf kale chips small batch kogi direct trade shaman.</textarea>
+                      name="descriptions"
+                      placeholder="Description"
+                    >{{$products->ProDescription}}</textarea>
                   </div>
                   <div class="form-group mb-3">
                     <label
@@ -44,69 +59,86 @@
                     <select
                       class="custom-select tm-select-accounts"
                       id="category"
+                      name="category"
                     >
-                      <option>Select category</option>
-                      <option value="1" selected>New Arrival</option>
-                      <option value="2">Most Popular</option>
-                      <option value="3">Trending</option>
+                      @foreach($categorys as $cateo)
+                      <option value="{{$cateo->id}}" name="category" >{{$cateo->name}}</option>
+                      @endforeach
                     </select>
+                    <!-- <input type="text" name="category"> -->
+                  </div>
+                  <div class="form-group mb-3">
+                    <label
+                      for="unit"
+                      >Unit</label
+                    >
+                    <input
+                      class="form-control validate"
+                      rows="3"
+                      required
+                      name="unit"
+                      value="{{$products->ProUnit}}"
+                      placeholder="Unit"
+                      title="đơn vị tính"
+                    >
                   </div>
                   <div class="row">
                       <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
                             for="expire_date"
-                            >Expire Date
+                            >Unit Price
                           </label>
                           <input
-                            id="expire_date"
-                            name="expire_date"
+                            id="unit_price"
+                            name="unit_price"
                             type="text"
-                            value="22 Oct, 2020"
                             class="form-control validate"
                             data-large-mode="true"
+                            value="{{$products->unit_price}}"
+                            placeholder="0$"
+                            title="Unit Price > Promotion Price"
                           />
                         </div>
                         <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
                             for="stock"
-                            >Units In Stock
+                            >Promotion Price
                           </label>
                           <input
-                            id="stock"
-                            name="stock"
+                            id="unit_promotion"
+                            name="unit_promotion"
                             type="text"
-                            value="19,765"
+                            value="{{$products->promotion_price}}"
+                            placeholder="0$"
                             class="form-control validate"
+                            required
+                            title="Promotion Price < Unit Price"
                           />
+                          <div id="errorLabprice" style="color:red; display:none">Promotion Price < Unit Price </div>
                         </div>
                   </div>
                   
               </div>
               <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                <div class="tm-product-img-edit mx-auto">
-                  <img src="img/product-image.jpg" alt="Product image" class="img-fluid d-block mx-auto">
-                  <i
-                    class="fas fa-cloud-upload-alt tm-upload-icon"
-                    onclick="document.getElementById('fileInput').click();"
-                  ></i>
-                </div>
+                <img class="tm-product-img-dummy mx-auto" src="{{asset($products  ->ProImage)}}">
                 <div class="custom-file mt-3 mb-3">
-                  <input id="fileInput" type="file" style="display:none;" />
+                  <input id="fileInput" type="file" name="img" style="display:none;" />
                   <input
                     type="button"
                     class="btn btn-primary btn-block mx-auto"
-                    value="CHANGE IMAGE NOW"
+                    value="UPLOAD PRODUCT IMAGE"
                     onclick="document.getElementById('fileInput').click();"
                   />
                 </div>
+                <div>kjkasnfkjsahdfkljsahdfkj</div>
               </div>
               <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Now</button>
+                <button type="submit" class="btn btn-primary btn-block text-uppercase">Edit Product Now</button>
               </div>
             </form>
             </div>
           </div>
         </div>
       </div>
-</div>
+    </div>
 @endsection

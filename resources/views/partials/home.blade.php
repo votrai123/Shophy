@@ -238,7 +238,7 @@
                                 <li class="product-item kid">
                                     <div class="product-thumb clearfix">
                                         <a href="{{route('detailproduct',$aproduct->id)}}">
-                                            <img src="{{$aproduct->ProImage}}" height="218px" alt="image error">
+                                            <img src="{{asset($aproduct->ProImage)}}" height="218px" alt="image error">
                                         </a>
                                         @if($aproduct->promotion_price!=0)
                                         <span class="new sale">Sale</span>
@@ -284,7 +284,7 @@
                                 <li class="product-item man">
                                     <div class="product-thumb clearfix">
                                         <a href="{{route('detailproduct',$nproduct->id)}}">
-                                            <img src="{{$nproduct->ProImage}}" height="218px" alt="image">
+                                            <img src="{{asset($nproduct->ProImage)}}" height="218px" alt="image">
                                         </a>
                                         <span class="new">New</span>
                                     </div>
@@ -316,7 +316,7 @@
                                 <li class="product-item woman">
                                     <div class="product-thumb clearfix">
                                         <a href="{{route('detailproduct',$sproduct->id)}}" class="product-thumb">
-                                            <img src="{{$sproduct->ProImage}}" height="218px" alt="image">
+                                            <img src="{{asset($sproduct->ProImage)}}" height="218px" alt="image">
                                         </a>
                                         <span class="new sale">Sale</span>
                                     </div>

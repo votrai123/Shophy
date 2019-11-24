@@ -57,10 +57,10 @@
             drawBarChart(); // Bar Chart
             drawPieChart(); // Pie Chart
 
-            $(window).resize(function () {
-                updateLineChart();
-                updateBarChart();                
-            });
+            // $(window).resize(function () {
+            //     updateLineChart();
+            //     updateBarChart();                
+            // });
         })
     </script>
 </body>

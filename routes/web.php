@@ -53,8 +53,8 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
     Route::group(['prefix' => 'products', 'as'=>'products'], function () {
         Route::get('listproducts','Pages\\Auth\\AdminController\\AdminProducts@getListproduct');
 
-        Route::get('editproducts','Pages\\Auth\\AdminController\\AdminProducts@getEditproduct');
-        Route::post('editproducts','Pages\\Auth\\AdminController\\AdminProducts@postEditproduct');
+        Route::get('editproducts/{id}','Pages\\Auth\\AdminController\\AdminProducts@getEditproduct');
+        Route::post('editproducts/{id}','Pages\\Auth\\AdminController\\AdminProducts@postEditproduct');
 
         Route::get('addproducts','Pages\\Auth\\AdminController\\AdminProducts@getAddproduct');
         Route::post('addproducts','Pages\\Auth\\AdminController\\AdminProducts@postAddproduct');

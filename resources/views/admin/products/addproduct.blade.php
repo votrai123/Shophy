@@ -21,7 +21,7 @@
             </div>
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="{{asset('admin/products/addproducts')}}"  method="post" class="tm-edit-product-form">
+                <form action="{{asset('admin/products/addproducts')}}" enctype="multipart/form-data"  method="post" class="tm-edit-product-form">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                   <div class="form-group mb-3">
                     <label
@@ -77,6 +77,7 @@
                       required
                       name="unit"
                       placeholder="Unit"
+                      title="đơn vị tính"
                     >
                   </div>
                   <div class="row">
@@ -92,12 +93,13 @@
                             class="form-control validate"
                             data-large-mode="true"
                             placeholder="0$"
+                            title="Unit Price > Promotion Price"
                           />
                         </div>
                         <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
                             for="stock"
-                            >Unit Promotion
+                            >Promotion Price
                           </label>
                           <input
                             id="unit_promotion"
@@ -106,7 +108,9 @@
                             placeholder="0$"
                             class="form-control validate"
                             required
+                            title="Promotion Price < Unit Price"
                           />
+                          <div id="errorLabprice" style="color:red; display:none">Promotion Price < Unit Price </div>
                         </div>
                   </div>
                   
