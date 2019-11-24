@@ -58,6 +58,8 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
 
         Route::get('addproducts','Pages\\Auth\\AdminController\\AdminProducts@getAddproduct');
         Route::post('addproducts','Pages\\Auth\\AdminController\\AdminProducts@postAddproduct');
+
+        Route::post('delproducts/{id}','Pages\\Auth\\AdminController\\AdminProducts@postDelproduct');
     });
     Route::group(['prefix' => 'users'], function () {
         Route::get('listusers','Pages\\Auth\\ListUserController@getListuser');

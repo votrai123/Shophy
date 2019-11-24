@@ -26,23 +26,66 @@ class AdminProducts extends Controller
         return view('admin.products.editproduct',compact('products','categorys'));
     }
     public function postEditproduct(Request $req,$id) {
-        $categorys = ProductType::find($id);
+        $products = Products::find($id);
         $this->validate($req,
         [
-            'namecategory' => 'required|unique:type_products,name|min:3|max:150'
+            // 'productname'=>'required|productname|unique:products,ProName',
+            // 'productname'=>'required|ProName|unique:products,ProName',
+            'descriptions' => 'required|min:3|max:255',
+            'productname' => 'required|unique:products,ProName|min:3|max:150',
+            'img' => 'required',
+            'unit' => 'required',
+            'unit_price' => 'required',
+            'unit_promotion' => 'required'
         ],
         [
-            'namecategory.required' => 'Chưa nhập tên thể loại thì lấy gì add',
-            'namecategory.unique' => 'Cái này có rồi',
-            'namecategory.min' => 'Ít nhất là 3 kí tự,Nhiều nhất là 150 kí tự',
-            'namecategory.max' => 'Nhiều nhất là 150 kí tự'
+            'productname.required' => 'Chưa nhập tên sản phẩm thì lấy gì sửa',
+            'descriptions.required' => 'Chưa nhập tên thể loại thì lấy gì sửa',
+            'img.required' => 'Chưa nhập hình thì lấy gì sửa',
+            'productname.unique' => 'Cái này có rồi',
+            'unit.required' => 'Chưa nhập đơn vị tính thì lấy gì sửa',
+            'unit_price.required' => 'Chưa nhập đơn giá thì lấy gì sửa',
+            'unit_promotion.required' => 'Chưa nhập giá khuyến mãi thì lấy gì sửa',
+            'descriptions.min' => 'Mô tả sản phẩm Ít nhất là 3 kí tự,Nhiều nhất là 255 kí tự',
+            'descriptions.max' => 'Mô tả sản phẩm nhiều nhất là 255 kí tự'
         ]);
-
+        $productName=$req -> input('productname');
+        $description = $req -> input('descriptions');
+        $id_type = $req ->input('category');
+        $unit=$req->input('unit');
+        $unit_price=$req->input('unit_price');
+        $promotion_price=$req->input('unit_promotion');
         
-        $categorys -> name = $req ->namecategory;
-        $categorys -> description = $req -> descriptions;
-        $categorys -> save();
-        return redirect('/admin/categorys/editcategorys/'.$id)->with('thongbao','Đã sửa thành công');
+
+        $insertArr = [
+            'ProName'=>$productName,
+            'ProDescription'=>$description,
+            'id_type'=>$id_type,
+            'ProUnit'=>$unit,
+            'promotion_price'=>$promotion_price,
+            'unit_price'=>$unit_price
+        ];
+// --------------------------------------------------------------------------------------------
+        // process file
+        
+        // info('aaaaaaaaaaaaa');
+        // info($hasFile);
+        $hasFile = $req->hasFile('img');
+        if ($hasFile) {
+            $file = $req->file('img');
+        
+            $newImageURL= UploadFile::uploadFile('upload',$file);
+            // echo $newImageURL;
+            $insertArr['ProImage'] = $newImageURL;
+        }
+        // return $insertArr;
+
+        // DB::table('products')
+        //    ->insert($insertArr);
+           DB::table('products')
+              ->where('id', $id)
+              ->update($insertArr);
+        return redirect('/admin/products/editproducts/'.$id)->with('thongbao','Đã sữa thành công');
     }
     public function getAddproduct() {
         $categorys = ProductType::all();
@@ -185,5 +228,14 @@ class AdminProducts extends Controller
     public function deletecate(Request $req) {
         $dcategorys = ProductType::where('id',$req->id)->first();
         return view('admin.products.listproduct',compact('dcategorys'));
+    }
+
+    public function deletepro(Request $req) {
+        $dproduct = Products::where('id',$req->id)->first();
+        return view('admin.products.listproduct',compact('dproduct'));
+    }
+    public function postDelproduct($id) {
+        DB::table('products')
+        ->where('id', '=', $id)->delete();
     }
 } 

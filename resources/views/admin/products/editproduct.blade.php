@@ -21,7 +21,7 @@
             </div>
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="admin/products/editproducts" enctype="multipart/form-data"  method="post" class="tm-edit-product-form">
+                <form action="/admin/products/editproducts/{{$products->id}}" enctype="multipart/form-data"  method="post" class="tm-edit-product-form">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                   <div class="form-group mb-3">
                     <label
@@ -122,15 +122,16 @@
               <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
                 <img class="tm-product-img-dummy mx-auto" src="{{asset($products  ->ProImage)}}">
                 <div class="custom-file mt-3 mb-3">
-                  <input id="fileInput" type="file" name="img" style="display:none;" />
+                  <input id="fileInput" type="file" name="img" onchange="readURL(this);" style="display:none;" />
                   <input
                     type="button"
                     class="btn btn-primary btn-block mx-auto"
                     value="UPLOAD PRODUCT IMAGE"
                     onclick="document.getElementById('fileInput').click();"
                   />
+                  
                 </div>
-                <div>kjkasnfkjsahdfkljsahdfkj</div>
+                <img id="blah"  alt="Hình sau khi đổi sẽ hiện ở đây" />
               </div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block text-uppercase">Edit Product Now</button>

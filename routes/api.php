@@ -26,6 +26,13 @@ Route::post('deletecate/{id}', function ($id) {
     dd($data);
     // return $data;
 });
+Route::post('deletepro/{id}', function ($id) {
+    $data = DB::table('products')
+    ->where('id', '=', $id)
+    ->delete();
+    dd($data);
+    // return $data;
+});
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

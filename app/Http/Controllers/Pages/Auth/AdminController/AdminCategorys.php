@@ -21,7 +21,7 @@ class AdminCategorys extends Controller
             'namecategory' => 'required|unique:type_products,name|min:3|max:150'
         ],
         [
-            'namecategory.required' => 'Chưa nhập tên thể loại thì lấy gì add',
+            'namecategory.required' => 'Chưa nhập tên thể loại thì lấy gì sửa',
             'namecategory.unique' => 'Cái này có rồi',
             'namecategory.min' => 'Ít nhất là 3 kí tự,Nhiều nhất là 150 kí tự',
             'namecategory.max' => 'Nhiều nhất là 150 kí tự'

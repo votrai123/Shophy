@@ -23,10 +23,12 @@
                         </thead>
                         <tbody>
                         @foreach($products as $proo)
-                            <tr>
-                            
+                        
+                            <tr>                            
                                 <th scope="row"><input type="checkbox" /></th>
-                                <td class="tm-product-name">{{$proo->ProName}}</td>
+                                <td class="tm-product-name">
+                                <a href="/admin/products/editproducts/{{$proo->id}}">{{$proo->ProName}}
+                                </a></td>
                                 <td>{{$proo->id_type}}</td>
                                 <!-- <td>{{$proo->ProDescription}}</td> -->
                                 <td>{{$proo->unit_price}}</td>
@@ -38,10 +40,11 @@
                                 <td>
                                     <a class="tm-product-delete-link">
                                         <i class="far fa-trash-alt tm-product-delete-icon" data-toggle="modal"
-                                        onclick='setid({{$proo->id}})' data-target="#myModal1"></i>
+                                        onclick='setidpro({{$proo->id}})' data-target="#myModal1"></i>
                                     </a>
                                 </td>
                             </tr>
+                        
                         @endforeach
                         </tbody>
                     </table>
@@ -62,8 +65,8 @@
                                             <p>Bạn có muốn xóa sản phẩm này không?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" id="deletecate" class="btn btn-primary"
-                                                onclick="deletecate()">YES</button>
+                                            <button type="button" id="deletepro" class="btn btn-primary"
+                                                onclick="deletepro()">YES</button>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">NO and
                                                 Close</button>
                                         </div>
@@ -90,7 +93,7 @@
                                 <td class="text-center">
                                     <a class="tm-product-delete-link">
                                         <i class="far fa-trash-alt tm-product-delete-icon" data-toggle="modal"
-                                            onclick='setid({{$cate->id}})' data-target="#myModal"></i>
+                                            onclick='setidcate({{$cate->id}})' data-target="#myModal"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -122,9 +125,9 @@
                     </table>
                 </div>
                 <!-- table container -->
-                <button class="btn btn-primary btn-block text-uppercase mb-3">
+                <a class="btn btn-primary btn-block text-uppercase mb-3" href="/admin/categorys/addcategorys">
                     Add new category
-                </button>
+                </a>
             </div>
         </div>
     </div>
