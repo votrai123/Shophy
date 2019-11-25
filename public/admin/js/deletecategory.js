@@ -1,5 +1,6 @@
 var selected_id=null;
 var selected_id1=null;
+var selected_checkbox =[];
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -31,7 +32,21 @@ function deletepro() {
 }
 function setidcate(id) {
     selected_id=id;
+    // return selected_id;
 }
+function setidpron(id) {
+    // for(var i=0, len=id.option.lenght;i<len;i++){
+        // opt=id.option[i];
+        
+        // if ( opt.selected ) {
+            selected_checkbox=[id];
+            // selected_checkbox.push(opt);
+        document.getElementById("demo").innerHTML = selected_checkbox;
+    // }
+    
+    // return selected_checkbox;
+}
+
 function setidpro(id) {
     selected_id1=id;
 }
@@ -59,3 +74,13 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+$(document).ready(function() {
+    $("#role").change(function() {
+        var role = $(this).val();
+        // alert(role);
+         $.get("ajax/role/"+role,function(data) {
+             
+         });
+        
+    });
+ });

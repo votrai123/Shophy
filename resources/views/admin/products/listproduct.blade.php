@@ -8,7 +8,7 @@
                     <table class="table table-hover tm-table-small tm-product-table">
                         <thead>
                             <tr>
-                                <th scope="col">&nbsp;</th>
+                                <!-- <th scope="col">&nbsp;</th> -->
                                 <th scope="col">PRODUCT NAME</th>
                                 <th scope="col">CATEGORY</th>
                                 <!-- <th scope="col">DESCRIPTION</th> -->
@@ -25,9 +25,9 @@
                         @foreach($products as $proo)
                         
                             <tr>                            
-                                <th scope="row"><input type="checkbox" /></th>
+                                <!-- <th scope="row"><input type="checkbox" onclick="setidpron([{{$proo->id}}])" /></th> -->
                                 <td class="tm-product-name">
-                                <a href="/admin/products/editproducts/{{$proo->id}}">{{$proo->ProName}}
+                                <a href="/admin/products/editproducts/{{$proo->id}}"  style="color:white;">{{$proo->ProName}}
                                 </a></td>
                                 <td>{{$proo->id_type}}</td>
                                 <!-- <td>{{$proo->ProDescription}}</td> -->
@@ -38,7 +38,7 @@
                                 <td>{{$proo->created_at}}</td>
                                 <td>{{$proo->updated_at}}</td>
                                 <td>
-                                    <a class="tm-product-delete-link">
+                                    <a class="tm-product-delete-link" style="color:white;">
                                         <i class="far fa-trash-alt tm-product-delete-icon" data-toggle="modal"
                                         onclick='setidpro({{$proo->id}})' data-target="#myModal1"></i>
                                     </a>
@@ -75,9 +75,9 @@
                             </div>
                 <!-- table container -->
                 <a href="/admin/products/addproducts" class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
-                <button class="btn btn-primary btn-block text-uppercase">
+                <!-- <button class="btn btn-primary btn-block text-uppercase">
                     Delete selected products
-                </button>
+                </button> -->
             </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
@@ -88,7 +88,7 @@
                         <tbody>
                             @foreach($categorys as $cate)
                             <tr>
-                                <td><a class="tm-product-name"
+                                <td><a style="color:white;" class="tm-product-name"
                                         href="/admin/categorys/editcategorys/{{$cate->id}}">{{$cate->name}} </a></td>
                                 <td class="text-center">
                                     <a class="tm-product-delete-link">

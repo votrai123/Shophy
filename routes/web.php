@@ -12,7 +12,7 @@
 */
 
 // Route::get('/haizz', function () {
-//     return view('admin.partials.addproduct');
+//     return view('admin.user.listusers-op');
 // });
 Route::get('product/{type}', [ 
     'as'=> 'productlist',
@@ -62,11 +62,11 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
         Route::post('delproducts/{id}','Pages\\Auth\\AdminController\\AdminProducts@postDelproduct');
     });
     Route::group(['prefix' => 'users'], function () {
-        Route::get('listusers','Pages\\Auth\\ListUserController@getListuser');
+        Route::get('listusers','Pages\\Auth\\AdminController\\UserController@getListuser');
 
-        Route::get('editusers','Pages\\Auth\\EditUserController@getEdituser');
+        Route::get('editusers','Pages\\Auth\\AdminController\\UserController@getEdituser');
         
-        Route::get('addusers','Pages\\Auth\\AddUserController@getAdduser');
+        Route::get('addusers','Pages\\Auth\\AdminController\\UserController@getAdduser');
     });
     Route::group(['prefix' => 'categorys'], function () {
 

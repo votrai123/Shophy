@@ -1,110 +1,65 @@
 @extends('admin.index')
 @section('content')
-      <div class="container mt-5">
-        <div class="row tm-content-row">
-          <div class="col-12 tm-block-col">
-            <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-              <h2 class="tm-block-title">List of Accounts</h2>
-              <p class="text-white">Accounts</p>
-              <select class="custom-select">
-                <option value="0">Select account</option>
+<div class="row tm-content-row">
+    <div class="col-12 tm-block-col">
+        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+            <h2 class="tm-block-title">List of Accounts</h2>
+            <p class="text-white">Accounts</p>
+            <select class="custom-select" id="role">
+                <!-- <option value="0">Select account</option> -->
                 <option value="1">Admin</option>
-                <option value="2">Editor</option>
-                <option value="3">Merchant</option>
-                <option value="4">Customer</option>
-              </select>
-            </div>
-          </div>
+                <!-- <option value="2">Editor</option> -->
+                <!-- <option value="3">Merchant</option> -->
+                <option value="0">Customer</option>
+            </select>
         </div>
-        <!-- row -->
-        <div class="row tm-content-row">
-          <div class="tm-block-col tm-col-avatar">
-            <div class="tm-bg-primary-dark tm-block tm-block-avatar">
-              <h2 class="tm-block-title">Change Avatar</h2>
-              <div class="tm-avatar-container">
-                <img
-                  src="img/avatar.png"
-                  alt="Avatar"
-                  class="tm-avatar img-fluid mb-4"
-                />
-                <a href="#" class="tm-avatar-delete-link">
-                  <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                </a>
-              </div>
-              <button class="btn btn-primary btn-block text-uppercase">
-                Upload New Photo
-              </button>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row tm-content-row">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
+            <div class="tm-bg-primary-dark tm-block tm-block-products">
+                <div class="tm-product-table-container">
+                    <table class="table table-hover tm-table-small tm-product-table">
+                        <thead>
+                            <tr>
+                                <!-- <th scope="col">&nbsp;</th> -->
+                                <th scope="col">FULL NAME</th>
+                                <th scope="col">BIRTH DAY</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">PHONE</th>
+                                <th scope="col">ADDRESS</th>
+                                <th scope="col">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        @foreach($users as $us)
+                        <tbody>
+                            
+                            <tr  id="users" >
+                              
+                                <td class="tm-product-name">{{$us->full_name}}</td>
+                                <td>{{$us->birth}}</td>
+                                <td>{{$us->email}}</td>
+                                <td>{{$us->phone}}</td>
+                                <td>{{$us->address}}</td>
+                                <td>
+                                    <a href="#" class="tm-product-delete-link">
+                                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                        @endforeach
+                    </table>
+                </div>
+                <!-- table container -->
+                <a href="add-product.html" class="btn btn-primary btn-block text-uppercase mb-3">Add new USER</a>
+                <button class="btn btn-primary btn-block text-uppercase">
+                    Delete selected products
+                </button>
             </div>
-          </div>
-          <div class="tm-block-col tm-col-account-settings">
-            <div class="tm-bg-primary-dark tm-block tm-block-settings">
-              <h2 class="tm-block-title">Account Settings</h2>
-              <form action="" class="tm-signup-form row">
-                <div class="form-group col-lg-6">
-                  <label for="name">Account Name</label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    class="form-control validate"
-                  />
-                </div>
-                <div class="form-group col-lg-6">
-                  <label for="email">Account Email</label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    class="form-control validate"
-                  />
-                </div>
-                <div class="form-group col-lg-6">
-                  <label for="password">Password</label>
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    class="form-control validate"
-                  />
-                </div>
-                <div class="form-group col-lg-6">
-                  <label for="password2">Re-enter Password</label>
-                  <input
-                    id="password2"
-                    name="password2"
-                    type="password"
-                    class="form-control validate"
-                  />
-                </div>
-                <div class="form-group col-lg-6">
-                  <label for="phone">Phone</label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    class="form-control validate"
-                  />
-                </div>
-                <div class="form-group col-lg-6">
-                  <label class="tm-hide-sm">&nbsp;</label>
-                  <button
-                    type="submit"
-                    class="btn btn-primary btn-block text-uppercase"
-                  >
-                    Update Your Profile
-                  </button>
-                </div>
-                <div class="col-12">
-                  <button
-                    type="submit"
-                    class="btn btn-primary btn-block text-uppercase"
-                  >
-                    Delete Your Account
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
+</div>
 @endsection
