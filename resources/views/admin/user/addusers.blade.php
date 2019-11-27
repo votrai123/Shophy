@@ -7,11 +7,24 @@
             <div class="row">
               <div class="col-12">
                 <h2 class="tm-block-title d-inline-block">Add User</h2>
+
               </div>
+              @if(count($errors)>0)
+              <div class="alert alert-danger">
+              @foreach($errors->all() as $err)
+                {{$err}} <br>
+              @endforeach
+              </div>
+              @endif
+              
+              @if(session('thongbao'))
+              <div class="alert alert-success">{{session('thongbao')}}</div>
+              @endif
             </div>
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="" class="tm-edit-product-form">
+                <form action="{{asset('admin/users/addusers')}}" class="tm-edit-product-form" method = "post">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
                   <div class="form-group mb-3">
                     <label
                       for="name"
@@ -55,6 +68,13 @@
                   <div class="form-group mb-3">
                     <label
                       for="category"
+                      >Confirm Password</label
+                    >
+                    <input type="password" class="form-control validate" name="repassword">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label
+                      for="category"
                       >Address</label
                     >
                     <input type="text" class="form-control validate" name="address">
@@ -71,6 +91,7 @@
              
               <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
+
               </div>
             </form>
             </div>

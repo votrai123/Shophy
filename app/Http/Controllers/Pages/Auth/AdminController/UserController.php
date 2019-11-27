@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Pages\Auth\AdminController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -38,7 +40,7 @@ class UserController extends Controller
         return view('admin.user.addusers');
     }
     public function postAdduser(Request $req){
-        $categorys = ProductType::find($id);
+        // $categorys = User::find($id);
         $this->validate($req,
         [
             // 'namecategory' => 'required|unique:type_products,name|min:3|max:150',
@@ -46,19 +48,46 @@ class UserController extends Controller
             'birth' => 'required',
             'email'=>'required|email|unique:users,email',
             'password' =>'required',
-            'address'  =>'required',
-            'phone' => 'required'
+            'repassword' => 'required|same:password',
+            'address'  =>'required|min:6|max:155',
+            'phone' => 'required|'
         ],
         [
             'fullname.required' => 'Chưa nhập tên thì lấy gì sửa',
-            'fullname.required' => 'Cái này có rồi',
-            'namecategory.min' => 'Ít nhất là 3 kí tự,Nhiều nhất là 150 kí tự',
-            'namecategory.max' => 'Nhiều nhất là 150 kí tự'
-        ]);
+            // 'fullname.required' => 'Cái này có rồi',
+            'fullname.min' => 'Tên có Ít nhất là 6 kí tự,Nhiều nhất là 15 kí tự',
+            'address.min' => 'Địa chỉ có ít nhất là 6 kí tự,Nhiều nhất là 15 kí tự',
+            'fullname.max' => 'Nhiều nhất là 150 kí tự',
+            'address.max' => 'Địa chỉ có Nhiều nhất là 150 kí tự',
+            'birth.required' => 'hãy chọn ngày sinh',
+            'password.required'=> 'Hãy nhập mật khẩu',
+            'repassword.same' => 'Mật khẩu không giống nhau',
+            'address.required' => 'Hãy nhập địa chỉ',
+            'phone.required'=> 'Hãy nhập địa chỉ',
+            'email.required'=>'Vui lòng nhập email',
+            'email.email'=>'Không đúng định dạng email',
+            'email.unique'=>'Email đã có người sữ dụng'
 
+        ]);
         
-        $categorys -> name = $req ->namecategory;
-        $categorys -> description = $req -> descriptions;
-        $categorys -> save();
-        return redirect('/admin/categorys/editcategorys/'.$id)->with('thongbao','Đã sửa thành công');
+        $users = new User;
+        $users -> full_name = $req ->fullname;
+        $users -> birth = $req -> birth;
+        $users -> email = $req -> email;
+        $users->password = Hash::make($req->password);
+        
+        $users -> address = $req -> address;
+        $users -> phone = $req -> phone;
+        // echo $req ->fullname;
+        // echo $req -> birth;
+        // echo $req -> email;
+        // echo Hash::make($req->password);
+        // echo 'repassword';
+        // echo $req -> address;
+        // echo $req -> phone;
+        //$categorys -> name = $req ->namecategory;
+       // $categorys -> description = $req -> descriptions;
+        $users -> save();
+        return redirect('/admin/users/addusers/')->with('thongbao','Đã thêm thành công');
     }
+}

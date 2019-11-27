@@ -45,6 +45,13 @@ class RegisterController extends AuthController
         $users->address = $req->Address;
         $users->phone = $req->Phone;
         $users->birth = $req->bday;
+        //  echo $req ->fullname;
+        // echo $req -> birth;
+        // echo $req -> email;
+        // echo Hash::make($req->password);
+        // echo 'repassword';
+        // echo $req -> address;
+        // echo $req -> phone;
         $users->save();
         return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }

@@ -37,6 +37,7 @@
                       value="{{$products->ProName}}"
                       required
                     />
+                    
                   </div>
                   <div class="form-group mb-3">
                     <label
