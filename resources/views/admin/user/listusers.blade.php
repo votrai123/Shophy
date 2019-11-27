@@ -32,11 +32,10 @@
                                 <th scope="col">&nbsp;</th>
                             </tr>
                         </thead>
+                        
+                        <tbody  id="users">
                         @foreach($users as $us)
-                        <tbody>
-                            
-                            <tr  id="users" >
-                              
+                            <tr>
                                 <td class="tm-product-name">{{$us->full_name}}</td>
                                 <td>{{$us->birth}}</td>
                                 <td>{{$us->email}}</td>
@@ -47,10 +46,11 @@
                                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
                                     </a>
                                 </td>
+                                
                             </tr>
-                            
+                            @endforeach
                         </tbody>
-                        @endforeach
+                        
                     </table>
                 </div>
                 <!-- table container -->
@@ -62,4 +62,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+
 @endsection

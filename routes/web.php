@@ -63,6 +63,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
     });
     Route::group(['prefix' => 'users'], function () {
         Route::get('listusers','Pages\\Auth\\AdminController\\UserController@getListuser');
+        Route::get('ajax/role/{role}', 'Pages\\Auth\\AdminController\\UserController@getAdminAndUser');
 
         Route::get('editusers','Pages\\Auth\\AdminController\\UserController@getEdituser');
         

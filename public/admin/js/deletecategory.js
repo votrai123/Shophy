@@ -78,8 +78,10 @@ $(document).ready(function() {
     $("#role").change(function() {
         var role = $(this).val();
         // alert(role);
-         $.get("ajax/role/"+role,function(data) {
-             
+         $.get("/admin/users/ajax/role/"+role,function(data) {
+            //  alert(data);
+            // alert(role);
+            $("#users").html(data);
          });
         
     });

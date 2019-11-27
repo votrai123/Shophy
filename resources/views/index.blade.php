@@ -126,5 +126,6 @@
             // if(id == 'iphone' && isNaN(value) == true){span.innerHTML ='Số điện thoại phải là kiểu số';}
             }
     </script>
+    @yield("scripts")
 </body> 
 </html>                               
