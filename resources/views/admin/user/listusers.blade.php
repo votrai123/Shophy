@@ -54,7 +54,7 @@
                     </table>
                 </div>
                 <!-- table container -->
-                <a href="add-product.html" class="btn btn-primary btn-block text-uppercase mb-3">Add new USER</a>
+                <a href="{{asset('admin/users/addusers')}}" class="btn btn-primary btn-block text-uppercase mb-3">Add new USER</a>
                 <button class="btn btn-primary btn-block text-uppercase">
                     Delete selected products
                 </button>

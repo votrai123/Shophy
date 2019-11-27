@@ -68,6 +68,7 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
         Route::get('editusers','Pages\\Auth\\AdminController\\UserController@getEdituser');
         
         Route::get('addusers','Pages\\Auth\\AdminController\\UserController@getAdduser');
+        Route::post('addusers','Pages\\Auth\\AdminController\\UserController@postAdduser');
     });
     Route::group(['prefix' => 'categorys'], function () {
 
@@ -80,4 +81,3 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
         Route::post('delcategorys/{id}', 'Pages\\Auth\\AdminController\\AdminCategorys@postDelcategory');
     });
 });
-jkasldfhkjsdfh

@@ -31,8 +31,8 @@ class AdminProducts extends Controller
         [
             // 'productname'=>'required|productname|unique:products,ProName',
             // 'productname'=>'required|ProName|unique:products,ProName',
-            'descriptions' => 'required|min:3|max:255',
-            'productname' => 'required|min:3|max:150',
+            // 'descriptions' => 'required|min:3|max:255',
+            // 'productname' => 'required|min:3|max:150',
             // 'img' => 'required',
             'unit' => 'required',
             'unit_price' => 'required',
@@ -46,8 +46,8 @@ class AdminProducts extends Controller
             // 'unit.required' => 'Chưa nhập đơn vị tính thì lấy gì sửa',
             // 'unit_price.required' => 'Chưa nhập đơn giá thì lấy gì sửa',
             // 'unit_promotion.required' => 'Chưa nhập giá khuyến mãi thì lấy gì sửa',
-            'descriptions.min' => 'Mô tả sản phẩm Ít nhất là 3 kí tự,Nhiều nhất là 255 kí tự',
-            'descriptions.max' => 'Mô tả sản phẩm nhiều nhất là 255 kí tự'
+            // 'descriptions.min' => 'Mô tả sản phẩm Ít nhất là 3 kí tự,Nhiều nhất là 255 kí tự',
+            // 'descriptions.max' => 'Mô tả sản phẩm nhiều nhất là 255 kí tự'
         ]);
         $productName=$req -> input('productname');
         $description = $req -> input('descriptions');
@@ -147,6 +147,7 @@ class AdminProducts extends Controller
 
         DB::table('products')
            ->insert($insertArr);
+        //    echo $insertArr;
         return redirect('admin/products/addproducts')->with('thongbao','Đã thêm thành công');
         // return redirect('/admin/products/addproducts');
         // -------------------
