@@ -80,10 +80,3 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
         Route::post('delcategorys/{id}', 'Pages\\Auth\\AdminController\\AdminCategorys@postDelcategory');
     });
 });
-<<<<<<< HEAD
-jaksd
-master dang ssuawr ở master
-=======
-kmsmndbjkfasbdkfjbsdk
-votrai mới thêm vào votrai
->>>>>>> votrai
