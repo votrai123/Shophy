@@ -40,7 +40,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="accounts.html">
+                        <a class="nav-link" href="{{asset('admin/users/listusers')}}">
                                 <i class="far fa-user"></i>
                                 Accounts
                             </a>

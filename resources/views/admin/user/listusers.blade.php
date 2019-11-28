@@ -36,7 +36,10 @@
                         <tbody  id="users">
                         @foreach($users as $us)
                             <tr>
-                                <td class="tm-product-name">{{$us->full_name}}</td>
+                            <td class="tm-product-name">
+                            <a href="/admin/users/editusers/{{$us->id}}"  style="color:white;">{{$us->full_name}}
+                            </a></td>
+                                <!-- <td class="tm-product-name">{{$us->full_name}}</td> -->
                                 <td>{{$us->birth}}</td>
                                 <td>{{$us->email}}</td>
                                 <td>{{$us->phone}}</td>
@@ -54,10 +57,10 @@
                     </table>
                 </div>
                 <!-- table container -->
-                <a href="add-product.html" class="btn btn-primary btn-block text-uppercase mb-3">Add new USER</a>
-                <button class="btn btn-primary btn-block text-uppercase">
+                <a href="/admin/users/addusers" class="btn btn-primary btn-block text-uppercase mb-3">Add new USER</a>
+                <!-- <button class="btn btn-primary btn-block text-uppercase">
                     Delete selected products
-                </button>
+                </button> -->
             </div>
         </div>
     </div>

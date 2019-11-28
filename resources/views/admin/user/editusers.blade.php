@@ -3,54 +3,73 @@
       <div class="container mt-5">
         <!-- row -->
         <div class="row tm-content-row">
-          <div class="tm-block-col tm-col-avatar">
-            <div class="tm-bg-primary-dark tm-block tm-block-avatar">
-              <h2 class="tm-block-title">Change Avatar</h2>
-              <div class="tm-avatar-container">
-                <img
-                  src="img/avatar.png"
-                  alt="Avatar"
-                  class="tm-avatar img-fluid mb-4"
-                />
-                <a href="#" class="tm-avatar-delete-link">
-                  <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                </a>
-              </div>
-              <button class="btn btn-primary btn-block text-uppercase">
-                Upload New Photo
-              </button>
-            </div>
+          
           </div>
           <div class="tm-block-col tm-col-account-settings">
             <div class="tm-bg-primary-dark tm-block tm-block-settings">
-              <h2 class="tm-block-title">Account Settings</h2>
-              <form action="" class="tm-signup-form row">
+              <h2 class="tm-block-title">Edit Account</h2>
+              @if(count($errors)>0)
+              <div class="alert alert-danger">
+              @foreach($errors->all() as $err)
+                {{$err}} <br>
+              @endforeach
+              </div>
+              @endif
+              @if(session('thongbao'))
+              <div class="alert alert-success">{{session('thongbao')}}</div>
+              @endif
+              <form action="/admin/users/editusers/{{$users->id}}" method="post" class="tm-signup-form row">
                 <div class="form-group col-lg-6">
-                  <label for="name">Account Name</label>
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                  <label for="name">Full Name</label>
                   <input
                     id="name"
-                    name="name"
+                    name="fullname"
                     type="text"
+                    value="{{$users->full_name}}"
                     class="form-control validate"
                   />
                 </div>
                 <div class="form-group col-lg-6">
-                  <label for="email">Account Email</label>
+                  <label for="birthday">Birthday</label>
                   <input
-                    id="email"
-                    name="email"
-                    type="email"
+                    id="birth"
+                    name="birth"
+                    type="date"
+                    value="{{$users -> birth}}"
                     class="form-control validate"
                   />
+                  </div>
+                  <div class="form-group col-lg-6">
+                  <label for="birthday">Address</label>
+                  <textarea
+                    id="address"
+                    name="address"
+                    type="text"
+                    class="form-control validate"
+                  >{{$users -> address}}</textarea>
+                  </div>
+                <div class="form-group col-lg-6">
+                  <label for="email">Email</label>
+                  <input
+                    id="regEmail"
+                    name="email"
+                    type="email"
+                    value="{{$users -> email}}"
+                    class="form-control validate"
+                  />
+                  <div id="existedEmail" style="color:red; display:none">Email này đã được dùng</div>
                 </div>
                 <div class="form-group col-lg-6">
                   <label for="password">Password</label>
                   <input
-                    id="password"
+                    
                     name="password"
                     type="password"
+                    id='regPassword'
                     class="form-control validate"
                   />
+                  <div id="errorLablePassword" style="color:red; display:none">Password phải lớn hơn 6 kí tự </div>
                 </div>
                 <div class="form-group col-lg-6">
                   <label for="password2">Re-enter Password</label>
@@ -67,24 +86,26 @@
                     id="phone"
                     name="phone"
                     type="tel"
+                    value="{{$users -> phone}}"
                     class="form-control validate"
                   />
                 </div>
                 <div class="form-group col-lg-6">
-                  <label class="tm-hide-sm">&nbsp;</label>
-                  <button
-                    type="submit"
-                    class="btn btn-primary btn-block text-uppercase"
-                  >
-                    Update Your Profile
-                  </button>
-                </div>
+            
+            <p class="text-white">Accounts</p>
+            <select class="custom-select" id="role" name="admin">
+                <option value="1">Admin</option>
+                <option value="0">Customer</option>
+            </select>
+        </div>
+
+                
                 <div class="col-12">
                   <button
                     type="submit"
                     class="btn btn-primary btn-block text-uppercase"
                   >
-                    Delete Your Account
+                  Update Your Profile
                   </button>
                 </div>
               </form>

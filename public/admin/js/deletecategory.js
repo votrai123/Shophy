@@ -86,3 +86,30 @@ $(document).ready(function() {
         
     });
  });
+ // validate email
+ $('#regEmail').on('input', function (e) {
+    var inputEmail = $('#regEmail').val();
+    
+    $.get(`/api/validateEmail/${inputEmail}`, (data, status) => {
+        $result = data;
+        
+        if ($result != 0) {
+            $('#existedEmail').show();
+        }
+        else {
+            $('#existedEmail').hide();
+        }
+    });
+});
+
+// validte password
+    $('#regPassword').on('input', function (e) {
+        var inputPassword = $('#regPassword').val();
+        if (inputPassword.length < 6) {
+            $('#errorLablePassword').show();
+        }
+        else {
+            $('#errorLablePassword').hide();
+        }
+
+    });
