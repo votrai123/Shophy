@@ -70,6 +70,8 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
         
         Route::get('addusers','Pages\\Auth\\AdminController\\UserController@getAdduser');
         Route::post('addusers','Pages\\Auth\\AdminController\\UserController@postAdduser');
+
+        Route::post('deleteuser/{id}','Pages\\Auth\\AdminController\\UserController@postDelusers');
     });
     Route::group(['prefix' => 'categorys'], function () {
 

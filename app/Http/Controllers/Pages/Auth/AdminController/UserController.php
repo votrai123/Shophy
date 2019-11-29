@@ -152,4 +152,9 @@ class UserController extends Controller
         $users -> save();
         return redirect('/admin/users/addusers/')->with('thongbao','Đã thêm thành công');
     }
+    //
+    public function postDelusers($id) {
+        DB::table('users')
+        ->where('id', '=', $id)->delete();
+    }
 }

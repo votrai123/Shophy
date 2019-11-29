@@ -45,13 +45,36 @@
                                 <td>{{$us->phone}}</td>
                                 <td>{{$us->address}}</td>
                                 <td>
-                                    <a href="#" class="tm-product-delete-link">
-                                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                    <a  class="tm-product-delete-link">
+                                        <i class="far fa-trash-alt tm-product-delete-icon" 
+                                        onclick='setidusers({{$us->id}})' data-toggle="modal" data-target="#myModal"></i>
                                     </a>
                                 </td>
                                 
                             </tr>
                             @endforeach
+                            <!-- Modal -->
+                            <div class="modal" tabindex="-1" role="dialog" id="myModal" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Thông báo</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Bạn có muốn xóa account này không?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="deleteuser" class="btn btn-primary"
+                                            onclick="deleteuser()">YES</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">NO and
+                                                Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tbody>
                         
                     </table>

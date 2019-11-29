@@ -1,5 +1,6 @@
 var selected_id=null;
 var selected_id1=null;
+var selected_id2=null;
 var selected_checkbox =[];
 $.ajaxSetup({
     headers: {
@@ -18,6 +19,18 @@ function deletecate() {
         });
     // console.log('abcd')
 }
+function deleteuser() {
+    
+    $.post(`/admin/users/deleteuser/${selected_id2}`,
+    {
+        
+    },
+    function(data, status){
+    //   alert("Data: " + data + "\nStatus: " + status);
+    location.reload();
+    });
+// console.log('abcd')
+}
 function deletepro() {
     
     $.post(`/admin/products/delproducts/${selected_id1}`,
@@ -32,6 +45,10 @@ function deletepro() {
 }
 function setidcate(id) {
     selected_id=id;
+    // return selected_id;
+}
+function setidusers(id) {
+    selected_id2=id;
     // return selected_id;
 }
 function setidpron(id) {
@@ -86,30 +103,3 @@ $(document).ready(function() {
         
     });
  });
- // validate email
- $('#regEmail').on('input', function (e) {
-    var inputEmail = $('#regEmail').val();
-    
-    $.get(`/api/validateEmail/${inputEmail}`, (data, status) => {
-        $result = data;
-        
-        if ($result != 0) {
-            $('#existedEmail').show();
-        }
-        else {
-            $('#existedEmail').hide();
-        }
-    });
-});
-
-// validte password
-    $('#regPassword').on('input', function (e) {
-        var inputPassword = $('#regPassword').val();
-        if (inputPassword.length < 6) {
-            $('#errorLablePassword').show();
-        }
-        else {
-            $('#errorLablePassword').hide();
-        }
-
-    });

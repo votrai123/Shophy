@@ -18,6 +18,15 @@ class AdminProducts extends Controller
     public function getListproduct() {
         $categorys = ProductType::all();
         $products = Products::all();
+        // $products = DB::table('products')
+        //                                 ->join('type_products','products.id','=','type_products.id')
+        //                                 ->select('products.*','type_products.name')
+        //                                 ->get();
+        // $products = DB::table('products')
+        // // ->join('type_products','products.id','=','type_products.id')
+        // ->crossJoin('type_products')
+        // ->select('products.*','type_products.name')
+        // ->get();
         return view('admin.products.listproduct',compact('categorys','products'));
     }
     public function getEditproduct($id) {
@@ -230,10 +239,10 @@ class AdminProducts extends Controller
         return view('admin.products.listproduct',compact('dcategorys'));
     }
 
-    public function deletepro(Request $req) {
-        $dproduct = Products::where('id',$req->id)->first();
-        return view('admin.products.listproduct',compact('dproduct'));
-    }
+    // public function deletepro(Request $req) {
+    //     $dproduct = Products::where('id',$req->id)->first();
+    //     return view('admin.products.listproduct',compact('dproduct'));
+    // }
     public function postDelproduct($id) {
         DB::table('products')
         ->where('id', '=', $id)->delete();
