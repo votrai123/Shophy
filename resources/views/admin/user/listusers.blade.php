@@ -1,5 +1,6 @@
 @extends('admin.index')
 @section('content')
+
 <div class="row tm-content-row">
     <div class="col-12 tm-block-col">
         <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
@@ -36,14 +37,19 @@
                         <tbody  id="users">
                         @foreach($users as $us)
                             <tr>
-                                <td class="tm-product-name">{{$us->full_name}}</td>
+                            <td class="tm-user-name">
+                                <a href="/admin/users/editusers/{{$us->id}}"  style="color:white;">{{$us->full_name}}
+                                </a></td>
+                                
+                                
                                 <td>{{$us->birth}}</td>
                                 <td>{{$us->email}}</td>
                                 <td>{{$us->phone}}</td>
                                 <td>{{$us->address}}</td>
                                 <td>
-                                    <a href="#" class="tm-product-delete-link">
-                                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                <a class="tm-product-delete-link" style="color:white;">
+                                        <i class="far fa-trash-alt tm-product-delete-icon" data-toggle="modal"
+                                        onclick='setidus({{$us->id}})' data-target="#myModal1"></i>
                                     </a>
                                 </td>
                                 
@@ -55,13 +61,40 @@
                 </div>
                 <!-- table container -->
                 <a href="{{asset('admin/users/addusers')}}" class="btn btn-primary btn-block text-uppercase mb-3">Add new USER</a>
-                <button class="btn btn-primary btn-block text-uppercase">
-                    Delete selected products
-                </button>
+                
             </div>
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="myModal1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Thông báo</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Bạn có muốn xóa người dùng này không?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="deletepro" class="btn btn-primary"
+                                                onclick="deletepro()">YES</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">NO and
+                                                Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                <!-- table container -->
+                <!-- <a href="/admin/products/addproducts" class="btn btn-primary btn-block text-uppercase mb-3">Add new user</a> -->
+                <!-- <button class="btn btn-primary btn-block text-uppercase">
+                    Delete selected products
+                </button> -->
+            </div>
 @endsection
 @section('scripts')
 

@@ -62,10 +62,13 @@ Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
         Route::post('delproducts/{id}','Pages\\Auth\\AdminController\\AdminProducts@postDelproduct');
     });
     Route::group(['prefix' => 'users'], function () {
-        Route::get('listusers','Pages\\Auth\\AdminController\\UserController@getListuser');
+        
         Route::get('ajax/role/{role}', 'Pages\\Auth\\AdminController\\UserController@getAdminAndUser');
 
-        Route::get('editusers','Pages\\Auth\\AdminController\\UserController@getEdituser');
+        Route::get('listusers','Pages\\Auth\\AdminController\\UserController@getListuser');
+
+        Route::get('editusers/{id}','Pages\\Auth\\AdminController\\UserController@getedituser');
+        Route::post('editusers/{id}','Pages\\Auth\\AdminController\\UserController@postedituser');
         
         Route::get('addusers','Pages\\Auth\\AdminController\\UserController@getAdduser');
         Route::post('addusers','Pages\\Auth\\AdminController\\UserController@postAdduser');
