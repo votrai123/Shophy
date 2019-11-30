@@ -40,16 +40,20 @@ Route::get('login', [
 Route::post('login', [ 
     'as'=> 'dang-nhap',
     'uses'=>'Pages\\Auth\\LoginController@postLogin']);
+Route::get('logout', [ 
+    'as'=> 'dang-xuat',
+    'uses'=>'Pages\\Auth\\LoginController@getlogout']);
 Route::get('register', [ 
     'as'=> 'dang-ky',
     'uses'=>'Pages\\Auth\\RegisterController@getRegister']);
 Route::post('register', [ 
     'as'=> 'dang-ky',
     'uses'=>'Pages\\Auth\\RegisterController@postRegister']);
-Route::get('admin/adminpage', [ 
-    'as'=> 'admin',
-    'uses'=>'Pages\\Auth\\HomeAdminController@getAdminPage']);
+// Route::get('admin/adminpage', [ 
+//     'as'=> 'admin',
+//     'uses'=>'Pages\\Auth\\HomeAdminController@getAdminPage']);
 Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
+    Route::get('admin', 'Pages\\Auth\\AdminController\\HomeAdminController@getAdminPage');
     Route::group(['prefix' => 'products', 'as'=>'products'], function () {
         Route::get('listproducts','Pages\\Auth\\AdminController\\AdminProducts@getListproduct');
 

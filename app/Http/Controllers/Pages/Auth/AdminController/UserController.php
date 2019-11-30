@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Pages\Auth\AdminController;
 
 
-use App\Http\Controllers\Controller;
+// use App\Http\Controllers\Controller;
+use App\Http\Controllers\Pages\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
+class UserController extends AuthController
 {
     //
     public function getListuser() {
@@ -24,7 +25,8 @@ class UserController extends Controller
         foreach ($adminorcus as $adcs) {
             echo"
             <tr>
-            <td class='tm-product-name'>".$adcs->full_name."</td>
+            <td class='tm-product-name'> <a href='/admin/users/editusers/".$adcs->id."'  
+            style='color:white;'>".$adcs->full_name."</a></td>
             <td>".$adcs->birth."</td>
             <td>".$adcs->email."</td>
            <td>".$adcs->phone."</td>
@@ -34,6 +36,9 @@ class UserController extends Controller
                     <i class='far fa-trash-alt tm-product-delete-icon'></i>
                 </a>
             </td> </tr>";
+            // <td class="tm-product-name">
+            //                 <a href="/admin/users/editusers/{{$us->id}}"  style="color:white;">{{$us->full_name}}
+            //                 </a></td>
         }
     }
     public function getAdduser(){

@@ -124,7 +124,7 @@
             // if(id == 'rpass' && value != pass){span.innerHTML ='Password nhập lại chưa đúng';}
             // // Kiểm tra số điện thoại
             // if(id == 'iphone' && isNaN(value) == true){span.innerHTML ='Số điện thoại phải là kiểu số';}
-            }
+            
     </script>
     @yield("scripts")
 </body> 

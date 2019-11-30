@@ -10,13 +10,13 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto h-100">
-                        <!-- <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{asset('admin/admin')}}">
                                 <i class="fas fa-tachometer-alt"></i>
                                 Dashboard
                                 <span class="sr-only">(current)</span>
                             </a>
-                        </li> -->
+                        </li>
                         <li class="nav-item dropdown">
 
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -45,7 +45,9 @@
                                 Accounts
                             </a>
                         </li>
+                        @if(isset($user_login))
                         <li class="nav-item dropdown">
+                        
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-cog"></i>
@@ -53,16 +55,19 @@
                                     Settings <i class="fas fa-angle-down"></i>
                                 </span>
                             </a>
+                            
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Profile</a>
-                                <a class="dropdown-item" href="#">Billing</a>
-                                <a class="dropdown-item" href="#">Customize</a>
+                                <a class="dropdown-item">Hello!! {{$user_login->full_name}}</a>
+                                <a class="dropdown-item" href="/admin/users/editusers/{{$user_login->id}}">Account Setting</a>
+                                <a class="dropdown-item" href="{{asset('logout')}}">Logout</a>
                             </div>
+                        
                         </li>
+                        @endif
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link d-block" href="login.html">
+                            <a class="nav-link d-block" href="{{asset('logout')}}">
                                 Admin, <b>Logout</b>
                             </a>
                         </li>

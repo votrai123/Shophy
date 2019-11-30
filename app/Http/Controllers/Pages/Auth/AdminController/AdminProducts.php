@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Pages\Auth\AdminController;
 
-use App\Http\Controllers\Controller;
+// use App\Http\Controllers\Controller;
+use App\Http\Controllers\Pages\AuthController;
 use Illuminate\Http\Request;
 use App\Models\ProductType;
 use App\Models\Products;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Utils\UploadFile;
 use Illuminate\Support\Facades\DB;
 
-class AdminProducts extends Controller
+class AdminProducts extends AuthController
 {
     //
     public function getListproduct() {
