@@ -41,7 +41,7 @@ class AdminProducts extends AuthController
         [
             // 'productname'=>'required|productname|unique:products,ProName',
             // 'productname'=>'required|ProName|unique:products,ProName',
-            'descriptions' => 'required|min:3|max:255',
+            'descriptions' => 'required|min:3|max:1500',
             'productname' => 'required|min:3|max:150',
             // 'img' => 'required',
             'unit' => 'required',
@@ -56,9 +56,10 @@ class AdminProducts extends AuthController
             // 'unit.required' => 'Chưa nhập đơn vị tính thì lấy gì sửa',
             // 'unit_price.required' => 'Chưa nhập đơn giá thì lấy gì sửa',
             // 'unit_promotion.required' => 'Chưa nhập giá khuyến mãi thì lấy gì sửa',
-            'descriptions.min' => 'Mô tả sản phẩm Ít nhất là 3 kí tự,Nhiều nhất là 255 kí tự',
-            'descriptions.max' => 'Mô tả sản phẩm nhiều nhất là 255 kí tự'
+            'descriptions.min' => 'Mô tả sản phẩm Ít nhất là 3 kí tự,Nhiều nhất là 1500 kí tự',
+            'descriptions.max' => 'Mô tả sản phẩm nhiều nhất là 1500 kí tự'
         ]);
+        $time=time();
         $productName=$req -> input('productname');
         $description = $req -> input('descriptions');
         $id_type = $req ->input('category');
@@ -75,7 +76,8 @@ class AdminProducts extends AuthController
             'ProUnit'=>$unit,
             'ProNew' =>$pronew,
             'promotion_price'=>$promotion_price,
-            'unit_price'=>$unit_price
+            'unit_price'=>$unit_price,
+            'updated_at'=>date("Y-m-d",$time)
         ];
 // --------------------------------------------------------------------------------------------
         // process file

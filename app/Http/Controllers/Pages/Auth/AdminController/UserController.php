@@ -82,6 +82,7 @@ class UserController extends AuthController
             'email.email'=>'Không đúng định dạng email'
             // 'email.unique'=>'Email này đã được sử dụng'
         ]);
+        $time=time();
         $users -> full_name = $req -> fullname;
         $users -> birth = $req -> birth;
         $users -> email = $req -> email;
@@ -90,6 +91,7 @@ class UserController extends AuthController
         $users-> phone = $req-> phone;
         // $product -> id_type = $req -> $_POST['category'];
         $users-> admin = $req-> admin;
+        $users-> updated_at =  date("Y-m-d",$time);
         // echo  $req -> fullname;
         // echo  $req -> birth;
         // echo  $req -> email;

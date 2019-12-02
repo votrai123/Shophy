@@ -139,8 +139,8 @@
         					<div class="inner">
         						<ul class="menu-tab">
         							<li class="active">Description</li>
-        							<!-- <li>Additional information</li>
-        							<li>Reviews</li> -->
+        							<!-- <li>Additional information</li> -->
+        							<li>Reviews</li>
         						</ul>
         						<div class="content-tab">
         							<div class="content-inner">
@@ -168,33 +168,33 @@
                                                     <td>One Size, XL, L, M, S</td>
                                                 </tr>                       
                                             </table>
-                                        </div>        								 -->
-                                    </div>
+                                        </div>        								
+                                    </div> -->
                                     <!-- /.content-inner -->
-        							<!-- <div class="content-inner">
+        							<div class="content-inner">
                                         <div class="inner max-width-83 padding-top-33">
                                             <ol class="review-list">
                                                 <li class="review">
-                                                    <div class="thumb">
+                                                    <!-- <div class="thumb">
                                                         <img src="images/avatar-1.png" alt="Image">
-                                                    </div>
+                                                    </div> -->
                                                     <div class="text-wrap">
                                                         <div class="review-meta">
                                                             <h5 class="name">Sophia Rosla</h5>
-                                                            <div class="flat-star style-1">
+                                                            <!-- <div class="flat-star style-1">
                                                                 <i class="fa fa-star"></i>
                                                                 <i class="fa fa-star"></i>
                                                                 <i class="fa fa-star"></i>
                                                                 <i class="fa fa-star"></i>
                                                                 <i class="fa fa-star-half-o"></i>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
                                                         <div class="review-text">
                                                             <p>I wanted to thank you so much for the rug we have received it really is beautiful and expertly made. I will be recommending you to all our friends.</p>
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class="review">
+                                                <!-- <li class="review">
                                                     <div class="thumb">
                                                         <img src="images/avatar.png" alt="Image">
                                                     </div>
@@ -213,7 +213,7 @@
                                                             <p class="line-height-28">Customer service is very important part of the buying experience to us and we must say that we have found Utility's to be impressive - we will certainly look to buy again in future.</p>
                                                         </div>
                                                     </div>
-                                                </li>              
+                                                </li>               -->
                                             </ol>
                                            
                                             <div class="comment-respond review-respond" id="respond">
@@ -222,29 +222,29 @@
                                                     <p>Your email address will not be published. Required fields are marked *</p>
                                                 </div>
                                                 <form novalidate="" class="comment-form review-form" id="commentform" method="post" action="#">
-                                                    <p class="flat-star style-2">
+                                                    <!-- <p class="flat-star style-2">
                                                         <label>Rating*:</label> 
                                                          <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
-                                                    </p>
+                                                    </p> -->
                                                     <p class="comment-form-comment">
                                                         <label>Review*</label>
                                                         <textarea class="" tabindex="4"  name="comment" required> </textarea>                          
                                                     </p>
-                                                    <p class="comment-name">
+                                                    <!-- <p class="comment-name">
                                                         <label>Name*</label>                                  
                                                         <input type="text" aria-required="true" size="30" value="" name="name" id="name">
-                                                    </p>
-                                                    <p class="comment-email"> 
+                                                    </p> -->
+                                                    <!-- <p class="comment-email"> 
                                                         <label>Email*</label>                                       
                                                         <input type="email" size="30" value="" name="email" id="email">
-                                                    </p>
-                                                    <p class="comment-form-notify clearfix">
+                                                    </p> -->
+                                                    <!-- <p class="comment-form-notify clearfix">
                                                         <input type="checkbox" name="check-notify" id="check-notify"> <label for="check-notify">Notify me of new posts by email</label>
-                                                    </p>                                                        
+                                                    </p>                                                         -->
                                                     <p class="form-submit">                 
                                                         <button class="comment-submit">Submit</button>
                                                     </p>
@@ -252,7 +252,7 @@
                                             </div>
                                                                                      
                                         </div>        								
-                                    </div> -->
+                                    </div>
                                     <!-- /.content-inner -->
         						</div>
         					</div>
@@ -276,7 +276,7 @@
                                 <li class="product-item">
                                     <div class="product-thumb clearfix">
                                         <a href="{{route('detailproduct',$reproduct->id)}}">
-                                            <img src="{{$reproduct->ProImage}}" height="218px" alt="image">
+                                            <img src="{{asset($reproduct->ProImage)}}" height="218px" alt="image">
                                         </a>
                                         @if($reproduct->promotion_price<>0)
                                         <span class="new sale">Sale</span>
