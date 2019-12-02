@@ -175,82 +175,42 @@
                                         <div class="inner max-width-83 padding-top-33">
                                             <ol class="review-list">
                                                 <li class="review">
-                                                    <!-- <div class="thumb">
-                                                        <img src="images/avatar-1.png" alt="Image">
-                                                    </div> -->
+                                                @foreach($product->comment_product as $cm)
+                                                
                                                     <div class="text-wrap">
                                                         <div class="review-meta">
-                                                            <h5 class="name">Sophia Rosla</h5>
-                                                            <!-- <div class="flat-star style-1">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-half-o"></i>
-                                                            </div> -->
-                                                        </div>
-                                                        <div class="review-text">
-                                                            <p>I wanted to thank you so much for the rug we have received it really is beautiful and expertly made. I will be recommending you to all our friends.</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- <li class="review">
-                                                    <div class="thumb">
-                                                        <img src="images/avatar.png" alt="Image">
-                                                    </div>
-                                                    <div class="text-wrap">
-                                                        <div class="review-meta">
-                                                            <h5 class="name">Jayne Haughton</h5>
-                                                            <div class="flat-star style-1">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-half-o"></i>
+                                                            <h5 class="name">{{$cm->users->full_name}}</h5>
+                                                            <div class="name">
+                                                                {{$cm->created_at}}
                                                             </div>
                                                         </div>
                                                         <div class="review-text">
-                                                            <p class="line-height-28">Customer service is very important part of the buying experience to us and we must say that we have found Utility's to be impressive - we will certainly look to buy again in future.</p>
+                                                            <p>{{$cm->comment}}</p>
                                                         </div>
                                                     </div>
-                                                </li>               -->
+                                                @endforeach
+                                                </li>
                                             </ol>
-                                           
+                                            @if(Auth::check()==true)
                                             <div class="comment-respond review-respond" id="respond">
                                                 <div class="comment-reply-title margin-bottom-14">
                                                     <h5>Write a review</h5>
                                                     <p>Your email address will not be published. Required fields are marked *</p>
                                                 </div>
-                                                <form novalidate="" class="comment-form review-form" id="commentform" method="post" action="#">
-                                                    <!-- <p class="flat-star style-2">
-                                                        <label>Rating*:</label> 
-                                                         <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </p> -->
+                                                
+                                                <form novalidate="" class="comment-form review-form" id="commentform" method="post" action="/comment/{{$product->id}}">
+                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                     <p class="comment-form-comment">
                                                         <label>Review*</label>
                                                         <textarea class="" tabindex="4"  name="comment" required> </textarea>                          
                                                     </p>
-                                                    <!-- <p class="comment-name">
-                                                        <label>Name*</label>                                  
-                                                        <input type="text" aria-required="true" size="30" value="" name="name" id="name">
-                                                    </p> -->
-                                                    <!-- <p class="comment-email"> 
-                                                        <label>Email*</label>                                       
-                                                        <input type="email" size="30" value="" name="email" id="email">
-                                                    </p> -->
-                                                    <!-- <p class="comment-form-notify clearfix">
-                                                        <input type="checkbox" name="check-notify" id="check-notify"> <label for="check-notify">Notify me of new posts by email</label>
-                                                    </p>                                                         -->
                                                     <p class="form-submit">                 
-                                                        <button class="comment-submit">Submit</button>
+                                                        <button class="comment-submit" onclick="insertcomment({{$product->id}})">Submit</button>
                                                     </p>
                                                 </form>
+                                                
                                             </div>
-                                                                                     
+                                            @endif                                         
                                         </div>        								
                                     </div>
                                     <!-- /.content-inner -->

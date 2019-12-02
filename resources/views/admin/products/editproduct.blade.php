@@ -154,5 +154,68 @@
           </div>
         </div>
       </div>
+  <div class="container mt-5">
+    <div class="row tm-content-row">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
+            <div class="tm-bg-primary-dark tm-block tm-block-products">
+                <div class="tm-product-table-container">
+                    <table class="table table-hover tm-table-small tm-product-table">
+                        <thead>
+                            <tr>
+                                <!-- <th scope="col">&nbsp;</th> -->
+                                <th scope="col">ID</th>
+                                <th scope="col">FULL NAME</th>
+                                <th scope="col">COMMENT</th>
+                                <th scope="col">DATE CREATE</th>
+                                <th scope="col">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody  id="users">
+                        @foreach($products->comment_product as $cm)
+                            <tr>
+                                <td>{{$cm->id}}</td>
+                                <td>{{$cm->users->full_name}}</td>
+                                <td>{{$cm->comment}}</td>
+                                <td>{{$cm->create_at}}</td>
+                                <td>
+                                    <a  class="tm-product-delete-link">
+                                        <i class="far fa-trash-alt tm-product-delete-icon" 
+                                        onclick='setidcomment({{$cm->id}})' data-toggle="modal" data-target="#myModal"></i>
+                                    </a>
+                                </td>
+                                
+                            </tr>
+                            @endforeach
+                            <!-- Modal -->
+                            <div class="modal" tabindex="-1" role="dialog" id="myModal" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Thông báo</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Bạn có muốn xóa account này không?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="deleteuser" class="btn btn-primary"
+                                            onclick="deletecomment()">YES</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">NO and
+                                                Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
+  </div>
+</div>
 @endsection

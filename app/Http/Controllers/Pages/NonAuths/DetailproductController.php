@@ -7,7 +7,9 @@ use App\Models\Products;
 use App\Models\ImagesProduct;
 use Illuminate\Http\Request;
 use App\Models\ProductType;
+use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DetailproductController extends NonAuthController
 {
@@ -27,6 +29,17 @@ class DetailproductController extends NonAuthController
                                         // print_r($iproduct);
                                         // exit();
         $typeproduct = ProductType::all();
-        return $this->view('partials.detail-product',compact('product','iproduct','typeproduct','relateproduct'));
+        $comment = Comment::all();
+        
+        return $this->view('partials.detail-product',compact('product','iproduct','typeproduct','relateproduct','comment'));
+    }
+    public function postComment($id, Request $req) {
+        $productss = Products::find($id);
+        $comment = new Comment;
+        $comment -> idproduct = $id;
+        $comment -> iduser = Auth::user()->id;
+        $comment -> comment = $req->comment;
+        $comment -> save();
+        return redirect("detail-product/".$id);
     }
 }

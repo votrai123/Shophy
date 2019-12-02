@@ -31,6 +31,7 @@ Route::get('faqs', [
     'uses'=>'Pages\\NonAuths\\FaqsController@getFaqs']);
 Auth::routes();
 // Route::get('/home', 'Pages\\Auth\\HomeController@getIndex');
+Route::post('/comment/{id}', 'Pages\\NonAuths\\DetailproductController@postComment');
 Route::get('home', [ 
     'as'=> 'home',
     'uses'=>'Pages\\NonAuths\\HomeController@getIndex']);
@@ -65,6 +66,8 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::post('addproducts','Pages\\Auth\\AdminController\\AdminProducts@postAddproduct');
 
         Route::post('delproducts/{id}','Pages\\Auth\\AdminController\\AdminProducts@postDelproduct');
+
+        Route::post('delcomment/{id}','Pages\\Auth\\AdminController\\AdminProducts@postDelcomment');
     });
     Route::group(['prefix' => 'users'], function () {
         Route::get('listusers','Pages\\Auth\\AdminController\\UserController@getListuser');

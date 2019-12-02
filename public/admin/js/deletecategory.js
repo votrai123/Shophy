@@ -1,7 +1,8 @@
 var selected_id=null;
 var selected_id1=null;
 var selected_id2=null;
-var selected_checkbox =[];
+var selected_id3 =null;
+// var selected_id4 =null;
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -43,6 +44,28 @@ function deletepro() {
     });
 // console.log('abcd')
 }
+function deletecomment() {
+    
+    $.post(`/admin/products/delcomment/${selected_id3}`,
+    {
+        
+    },
+    function(data, status){
+    //   alert("Data: " + data + "\nStatus: " + status);
+    location.reload();
+    });
+// console.log('abcd')
+}
+function insertcomment(id) {
+    $.post(`/comment/${id}`,
+    {
+        
+    },
+    function(data, status){
+    //   alert("Data: " + data + "\nStatus: " + status);
+    // location.reload();
+    });
+}
 function setidcate(id) {
     selected_id=id;
     // return selected_id;
@@ -51,19 +74,10 @@ function setidusers(id) {
     selected_id2=id;
     // return selected_id;
 }
-function setidpron(id) {
-    // for(var i=0, len=id.option.lenght;i<len;i++){
-        // opt=id.option[i];
-        
-        // if ( opt.selected ) {
-            selected_checkbox=[id];
-            // selected_checkbox.push(opt);
-        document.getElementById("demo").innerHTML = selected_checkbox;
-    // }
-    
-    // return selected_checkbox;
-}
 
+function setidcomment(id) {
+    selected_id3=id;
+}
 function setidpro(id) {
     selected_id1=id;
 }

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductType;
 use App\Models\Products;
 // use Validator;
-
+use App\Models\Comment;
 use Illuminate\Support\Facades\Validator;
 use App\Utils\UploadFile;
 use Illuminate\Support\Facades\DB;
@@ -250,6 +250,10 @@ class AdminProducts extends AuthController
     // }
     public function postDelproduct($id) {
         DB::table('products')
+        ->where('id', '=', $id)->delete();
+    }
+    public function postDelcomment($id) {
+        DB::table('comment_product')
         ->where('id', '=', $id)->delete();
     }
 } 

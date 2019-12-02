@@ -13,7 +13,10 @@ class Products extends Model
     }
     public function images_product() {
         return $this->hasMany('App\Models\ImagesProduct','id_image','id');
-    }   
+    }  
+    public function comment_product() {
+        return $this->hasMany('App\Models\Comment','idproduct','id');
+    }  
     
     protected $fillable = [
         'ProName'

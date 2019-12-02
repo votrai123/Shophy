@@ -29,7 +29,7 @@
                                 <td class="tm-product-name">
                                 <a href="/admin/products/editproducts/{{$proo->id}}"  style="color:white;">{{$proo->ProName}}
                                 </a></td>
-                                <td>{{$proo->id_type}}</td>
+                                <td>{{$proo->product_type->name}}</td>
                                 <!-- <td>{{$proo->ProDescription}}</td> -->
                                 <td>{{$proo->unit_price}}</td>
                                 <td>{{$proo->promotion_price}}</td>
