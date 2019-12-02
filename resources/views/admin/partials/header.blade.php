@@ -45,7 +45,7 @@
                                 Accounts
                             </a>
                         </li>
-                        @if(isset($user_login))
+                        
                         <li class="nav-item dropdown">
                         
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -57,18 +57,18 @@
                             </a>
                             
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item">Hello!! {{$user_login->full_name}}</a>
-                                <a class="dropdown-item" href="/admin/users/editusers/{{$user_login->id}}">Account Setting</a>
+                                <a class="dropdown-item">Hello {{Auth::user()->full_name}} </a>
+                                <a class="dropdown-item" href="/admin/users/editusers/{{Auth::user()->id}}">Account Setting</a>
                                 <a class="dropdown-item" href="{{asset('logout')}}">Logout</a>
                             </div>
                         
                         </li>
-                        @endif
+                        
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link d-block" href="{{asset('logout')}}">
-                                Admin, <b>Logout</b>
+                            Hello {{Auth::user()->full_name}}, <b>Logout</b>
                             </a>
                         </li>
                     </ul>

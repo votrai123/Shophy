@@ -52,7 +52,8 @@ Route::post('register', [
 // Route::get('admin/adminpage', [ 
 //     'as'=> 'admin',
 //     'uses'=>'Pages\\Auth\\HomeAdminController@getAdminPage']);
-Route::group(['prefix' => 'admin', 'as'=>'admin'], function () {
+// , 'middleware'=>'adminLogin'
+Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
     Route::get('admin', 'Pages\\Auth\\AdminController\\HomeAdminController@getAdminPage');
     Route::group(['prefix' => 'products', 'as'=>'products'], function () {
         Route::get('listproducts','Pages\\Auth\\AdminController\\AdminProducts@getListproduct');
