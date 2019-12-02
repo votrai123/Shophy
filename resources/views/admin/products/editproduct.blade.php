@@ -82,6 +82,19 @@
                       title="đơn vị tính"
                     >
                   </div>
+                  <div class="form-group mb-3">
+                    <label
+                      for="pronew"
+                      >Tình trạng</label
+                    >
+                  <select
+                      class="custom-select tm-select-accounts"
+                      name="pronew"
+                    >
+                      <option value="1" name="pronew" >Mới</option>
+                      <option value="0" name="pronew" >Cũ</option>
+                    </select>
+                  </div>
                   <div class="row">
                       <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label

@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class DetailproductController extends NonAuthController
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    // public function __construct()
+    // {
+    //     parent::__construct();
+    // }
     //
     public function getDetailproduct(Request $req){
         $product = Products::where('id',$req->id)->first();

@@ -16,11 +16,21 @@
                         <button type="submit" class="header-search-submit" title="Search">Search</button>
                     </form>
                 </li>
+                
+                @if(Auth::check()==true)
+                <li class="active">
+                    <div class="submenu">Chào!!{{Auth::user()->full_name}}</div>
+                </li>
+                <li class="active">
+                    <a class="submenu" href="{{asset('logout')}}">Logout</a>
+                </li>
+                @else
                 <li class="box-login">
                     <a class="icon_login" href="{{route('dang-nhap')}}"></a>
                 </li>
+                @endif
                 <li class="box-cart nav-top-cart-wrapper">
-                    <a class="icon_cart nav-cart-trigger active" href="#"><span>3</span></a>
+                    <a class="icon_cart nav-cart-trigger active" href="#"><span>0</span></a>
                     <div class="nav-shop-cart">
                         <div class="widget_shopping_cart_content">
                             <div class="woocommerce-min-cart-wrap">

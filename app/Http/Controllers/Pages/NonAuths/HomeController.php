@@ -8,10 +8,10 @@ use App\Models\Slide;
 use Illuminate\Http\Request;
 use App\Models\Products;
 
-
 class HomeController extends NonAuthController
 {
     //
+    
     public function getIndex(){
         // $slide1 = Slide::where('id',1,2)->get();
         // $slide2 = Slide::where('id',3,4)->get();

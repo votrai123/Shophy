@@ -33,7 +33,8 @@ class UserController extends AuthController
             <td>".$adcs->address."</td>
             <td>
                 <a href='#' class='tm-product-delete-link'>
-                    <i class='far fa-trash-alt tm-product-delete-icon'></i>
+                    <i class='far fa-trash-alt tm-product-delete-icon'  
+                    onclick='setidusers(".$adcs->id.")' data-toggle='modal' data-target='#myModal'></i>
                 </a>
             </td> </tr>";
             // <td class="tm-product-name">

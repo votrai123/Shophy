@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/haizz', function () {
-//     return view('admin.user.listusers-op');
-// });
+Route::get('/haizz', function () {
+    return view('partials.order-product');
+});
 Route::get('product/{type}', [ 
     'as'=> 'productlist',
     'uses'=>'Pages\\NonAuths\\ProductShopController@getProduct']);

@@ -49,7 +49,8 @@ class LoginController extends AuthController
                 return redirect('admin/admin');
             }else{
                 // return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập admin không thành công']);
-                return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
+                // return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
+                return redirect('home');
             }
             // $name = $user->full_name; //or Auth::user()->id;
             // $user_email = $user->email; // or Auth::user()->email;

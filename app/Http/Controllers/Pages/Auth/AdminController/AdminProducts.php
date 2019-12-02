@@ -63,6 +63,7 @@ class AdminProducts extends AuthController
         $description = $req -> input('descriptions');
         $id_type = $req ->input('category');
         $unit=$req->input('unit');
+        $pronew = $req ->input('pronew');
         $unit_price=$req->input('unit_price');
         $promotion_price=$req->input('unit_promotion');
         
@@ -72,6 +73,7 @@ class AdminProducts extends AuthController
             'ProDescription'=>$description,
             'id_type'=>$id_type,
             'ProUnit'=>$unit,
+            'ProNew' =>$pronew,
             'promotion_price'=>$promotion_price,
             'unit_price'=>$unit_price
         ];
