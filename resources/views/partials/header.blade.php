@@ -30,15 +30,33 @@
                 </li>
                 @endif
                 <li class="box-cart nav-top-cart-wrapper">
-                    <a class="icon_cart nav-cart-trigger active" href="#"><span>0</span></a>
+                    <a class="icon_cart nav-cart-trigger active" href="#"><span>
+                        @if(Session::has('cart')){{Session('cart')->totalQty}}@else 0 @endif</span></a>
                     <div class="nav-shop-cart">
                         <div class="widget_shopping_cart_content">
                             <div class="woocommerce-min-cart-wrap">
                                 <ul class="woocommerce-mini-cart cart_list product_list_widget ">
+                                @if(Session::has('cart'))
+                                @foreach($product_cart as $cproduct)
                                     <li class="woocommerce-mini-cart-item mini_cart_item">
-                                        <span>No Items in Shopping Cart</span>
+                                        <a href=""><img src="{{$cproduct['item']['ProImage']}}" alt=""></a>
                                     </li>
+                                    <li><span>{{$cproduct['item']['ProName']}}</span></li>
+                                    <li><span>{{$cproduct['qty']}}*<span>@if($cproduct['item']['promotion_price']==0)
+                                        {{$cproduct['item']['unit_price']}}@else{{$cproduct['item']['promotion_price']}}@endif</span></span></li>
+                                    <li class="add-to-cart text-center"> <a href="{{route('del-to-cart',$cproduct['item']['id'])}}">X</a></li>
+                                @endforeach
+                                
                                 </ul>
+                                <ul class="woocommerce-mini-cart cart_list product_list_widget">
+                                    <div class="product-item">
+                                    <div>Tổng tiền: <ins><span class="amount">{{Session('cart')->totalPrice}} đ</span></ins></div>
+                                    <div class="add-to-cart text-center">
+                                            <a href="">ORDER</a>
+                                        </div>
+                                    </div>
+                                </ul>
+                                @endif
                             </div><!-- /.widget_shopping_cart_content -->
                         </div>
                     </div><!-- /.nav-shop-cart -->

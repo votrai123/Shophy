@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/haizz', function () {
-    return view('partials.order-product');
-});
+// Route::get('/haizz', function () {
+//     return view('partials.order-product');
+// });
 Route::get('product/{type}', [ 
     'as'=> 'productlist',
     'uses'=>'Pages\\NonAuths\\ProductShopController@getProduct']);
@@ -31,7 +31,16 @@ Route::get('faqs', [
     'uses'=>'Pages\\NonAuths\\FaqsController@getFaqs']);
 Auth::routes();
 // Route::get('/home', 'Pages\\Auth\\HomeController@getIndex');
+
 Route::post('/comment/{id}', 'Pages\\NonAuths\\DetailproductController@postComment');
+
+Route::get('/add-to-cart/{id}',[ 
+    'as'=> 'add-to-cart',
+    'uses'=>'Pages\\NonAuths\\CartController@getAddtoCart'] );
+
+Route::get('/del-to-cart/{id}',[ 
+    'as'=> 'del-to-cart',
+    'uses'=>'Pages\\NonAuths\\CartController@getDeltoCart'] );
 Route::get('home', [ 
     'as'=> 'home',
     'uses'=>'Pages\\NonAuths\\HomeController@getIndex']);
