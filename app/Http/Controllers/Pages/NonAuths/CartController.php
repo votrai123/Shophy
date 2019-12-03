@@ -32,4 +32,10 @@ class CartController extends NonAuthController
         }
         return redirect()->back();
     }
+    public function getCart() {
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        return view('partials.order-product',['product_cart' => $cart->items, 'totalPrice' =>
+        $cart->totalPrice]);
+    }
 }

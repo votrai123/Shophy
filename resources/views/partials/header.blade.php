@@ -30,7 +30,7 @@
                 </li>
                 @endif
                 <li class="box-cart nav-top-cart-wrapper">
-                    <a class="icon_cart nav-cart-trigger active" href="#"><span>
+                    <a class="icon_cart nav-cart-trigger active" href="{{route('ordercard')}}"><span>
                         @if(Session::has('cart')){{Session('cart')->totalQty}}@else 0 @endif</span></a>
                     <div class="nav-shop-cart">
                         <div class="widget_shopping_cart_content">
@@ -52,7 +52,7 @@
                                     <div class="product-item">
                                     <div>Tổng tiền: <ins><span class="amount">{{Session('cart')->totalPrice}} đ</span></ins></div>
                                     <div class="add-to-cart text-center">
-                                            <a href="">ORDER</a>
+                                            <a href="{{route('ordercard')}}">ORDER</a>
                                         </div>
                                     </div>
                                 </ul>

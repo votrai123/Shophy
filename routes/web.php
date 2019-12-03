@@ -41,6 +41,10 @@ Route::get('/add-to-cart/{id}',[
 Route::get('/del-to-cart/{id}',[ 
     'as'=> 'del-to-cart',
     'uses'=>'Pages\\NonAuths\\CartController@getDeltoCart'] );
+
+Route::get('ordercart',[ 
+    'as'=> 'ordercard',
+    'uses'=>'Pages\\NonAuths\\CartController@getCart'] );
 Route::get('home', [ 
     'as'=> 'home',
     'uses'=>'Pages\\NonAuths\\HomeController@getIndex']);
