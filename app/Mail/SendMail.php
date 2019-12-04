@@ -32,7 +32,7 @@ class SendMail extends Mailable
     public function build()
     {
         return $this->from('nacari321@gmail.com')
-                    ->subject('Báo Giá Sản Phẩm')
+                    ->subject('Mail báo giá sản phẩm shop MOTORCYCLE')
                     ->view('partials.name')
                     ->with('data',$this->data);
     }

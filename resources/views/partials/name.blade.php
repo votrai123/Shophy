@@ -1,7 +1,7 @@
 <html>
 
 <body>
-    <p>Xin chào {{$data['name']}} !!!</p>
+    <p style='font-size:32px'>Xin chào {{$data['name']}} !!!</p>
     <br>
     <div>Chúng tôi gửi Email này để thông báo cho bạn đơn hàng bạn đã mua</div>
     <br>
@@ -9,8 +9,8 @@
     <ul>
         @foreach ($data['product_cart'] as $item)
         <li>
-            <b>Tên Sản Phẩm : </b>
-            <i>{{$item['item']['ProName']}}</i>
+            <b style='font-size:25px'>Tên Sản Phẩm : </b>
+            <i style='font-size:18px'>{{$item['item']['ProName']}}</i>
             &nbsp;
             <b>Giá:</b>
             <i>@if($item['item']['promotion_price']==0)
@@ -19,12 +19,13 @@
         </li>
         @endforeach
         &nbsp;
-        <b>Địa chỉ: </b>
+        <b style='font-size:18px'>Địa chỉ: </b>
         <i>{{$data['address']}}</i><br>
         &nbsp;
-        <b>Với lời nhắn: </b>
+        
+        <b style='font-size:18px'>Với lời nhắn: </b>
         <i>{{$data['message']}}</i>
-        <li><b>Tổng tiền: {{$data['totalPrice']}}</b> </li>
+        <li><b style="font-size:30px">Tổng tiền: {{$data['totalPrice']}}</b> </li>
     </ul>
     <p>Cảm ơn bạn đã tin dùng sản phẩm của chúng tôi</p>
 </body>
