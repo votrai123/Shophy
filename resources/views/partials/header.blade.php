@@ -11,8 +11,8 @@
             <ul class="menu-extra">
                 <li class="box-search">
                     <a class="icon_search header-search-icon" href="#"></a>
-                    <form role="search" method="get" class="header-search-form" action="#">
-                        <input type="text" value="" name="s" class="header-search-field" placeholder="Search...">
+                    <form role="search" method="get" class="header-search-form" action="{{route('search')}}">
+                        <input type="text" value="" name="sss" class="header-search-field" placeholder="Search...">
                         <button type="submit" class="header-search-submit" title="Search">Search</button>
                     </form>
                 </li>

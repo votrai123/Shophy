@@ -56,7 +56,10 @@
     <script src="{{asset('javascript/jquery.min.js')}}"></script>
     <script src="{{asset('javascript/tether.min.js')}}"></script>
     <script src="{{asset('javascript/bootstrap.min.js')}}"></script> 
-    <script src="{{asset('javascript/jquery.easing.js')}}"></script>    
+    <script src="{{asset('javascript/jquery.easing.js')}}"></script>  
+
+    
+    <script src="{{asset('admin/js/deletecategory.js')}}"></script>  
     <script src="{{asset('javascript/parallax.js')}}"></script>
     <script src="{{asset('javascript/jquery-waypoints.js')}}"></script>
     <script src="{{asset('javascript/jquery-countTo.js')}}"></script>

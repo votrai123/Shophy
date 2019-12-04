@@ -56,6 +56,20 @@ Route::get('thanks',[
 Route::get('home', [ 
     'as'=> 'home',
     'uses'=>'Pages\\NonAuths\\HomeController@getIndex']);
+
+
+
+
+Route::get('/home/pronew', [ 
+    'as'=> 'pronew',
+    'uses'=>'Pages\\NonAuths\\HomeController@getHomeNew']);
+
+Route::get('search',[
+    'as' => 'search',
+    'uses' =>'Pages\\NonAuths\\HomeController@getSearch']);
+
+
+
 Route::get('login', [ 
     'as'=> 'dang-nhap',
     'uses'=>'Pages\\Auth\\LoginController@getLogin']);
