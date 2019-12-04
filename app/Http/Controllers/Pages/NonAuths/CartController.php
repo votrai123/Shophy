@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Pages\NonAuths;
 // use App\Http\Controllers\Controller;
 use App\Http\Controllers\Pages\NonAuthController;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Mail;
 use App\Models\Products;
 use App\Models\Cart;
+use App\Mail\SendMail;
 use Session;
 
 class CartController extends NonAuthController
@@ -37,5 +40,45 @@ class CartController extends NonAuthController
         $cart = new Cart($oldCart);
         return view('partials.order-product',['product_cart' => $cart->items, 'totalPrice' =>
         $cart->totalPrice]);
+    }
+    function sendCart(Request $req)
+    {
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        // $nn=[];
+            $this->validate($req,
+        [
+            'name' => 'required|min:3|max:150',
+            'email' => 'required|email',
+            'address' => 'required|min:5|max:150',
+            'message' => 'max:255'
+        ],
+        [
+            'name.required' => 'Chưa nhập tên bạn ơi!!',
+            'name.min' => 'Tên ít nhất là 3 kí tự,Nhiều nhất là 150 kí tự',
+            'name.max' => 'Tên nhiều nhất là 150 kí tự',
+            'address.required' => 'Chưa nhập địa chỉ bạn ơi!!',
+            'email.required' => 'Chưa nhập email bạn ơi!!',
+            'address.min' => 'Địa chỉ ít nhất là 3 kí tự,Nhiều nhất là 150 kí tự',
+            'address.max' => 'Địa chỉ nhiều nhất là 150 kí tự',
+            'email.email' => 'Chưa đúng dạng email',
+            'message.max' => 'lời nhắn lớn nhất 255 kí tự'
+        ]);
+            $data=array(
+                    'name' => $req->input('name'),
+                    'message' =>$req->input('message'),
+                    'email'=>$req->input('email'),
+                    'address'=>$req->input('address'),
+                    'product_cart' => $cart->items,
+                     'totalPrice' =>  $cart->totalPrice,
+            );
+        
+        Mail::to($req->input('email'))->send(new SendMail($data));
+        // dd('kamsmhdkjashdkjas');
+        return redirect('/thanks');
+        
+    }
+    public function CamOn() {
+        return view('partials.thanks');
     }
 }

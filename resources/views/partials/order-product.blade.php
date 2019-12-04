@@ -15,38 +15,61 @@
             @if(Session::has('cart'))
             <div class="row">
                 <div>
-                    @foreach($product_cart as $product)
-                    <ul>
+                    @if(count($errors)>0)
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $err)
+                        {{$err}} <br>
+                        @endforeach
+                    </div>
+                    @endif
+                    @if(session('thongbao'))
+                    <div class="alert alert-success">{{session('thongbao')}}</div>
+                    @endif
+                    <table>
+                        <tr>
+                            <th>PICTURE</th>
+                            <th>PRODUCT NAME</th>
+                            <th>AMOUNT</th>
+                            <th>PRICE</th>
+                            <th>DELETE</th>
+                        </tr>
+                        @foreach($product_cart as $product)
+                        <tr>
+                            <td>
+                                <a class="woocommerce-mini-cart-item mini_cart_item" href=""><img
+                                        src="{{$product['item']['ProImage']}}" height="150px" width="150px" alt=""></a>
+                            </td>
+                            <td><span>{{$product['item']['ProName']}}</span></td>
+                            <td><span>{{$product['qty']}}</span></td>
+                            <td><span>@if($product['item']['promotion_price']==0)
+                                    {{$product['item']['unit_price']}}@else{{$product['item']['promotion_price']}}@endif</span>
+                            </td>
+                            <td><a href="{{route('del-to-cart',$product['item']['id'])}}">Del</a></td>
+                        </tr>
 
-                        <a class="woocommerce-mini-cart-item mini_cart_item" href=""><img
-                                src="{{$product['item']['ProImage']}}" height="150px" alt=""></a>
-
-                        <span>{{$product['item']['ProName']}}------</span>
-                        <span>---- Số lượng {{$product['qty']}}*<span>@if($product['item']['promotion_price']==0)
-                                -------{{$product['item']['unit_price']}}@else---------{{$product['item']['promotion_price']}}@endif</span></span>
-                        <a href="{{route('del-to-cart',$product['item']['id'])}}">Del</a>
-
-                    </ul>
-
-                    @endforeach
+                        @endforeach
+                    </table>
                     <ul class="woocommerce-mini-cart cart_list product_list_widget">
                         <div class="product-item">
-                            <div class="add-to-cart text-center">Tổng tiền: <ins><span
+                            <div class="add-to-cart text-center title">Tổng tiền: <ins><span
                                         class="amount">{{Session('cart')->totalPrice}} đ</span></ins>
                             </div>
                         </div>
                     </ul>
+
+
                 </div>
             </div>
             @endif
             <div class="row">
                 <div class="wrap-contact style2">
-                    <form novalidate="" class="contact-form" id="contactform" method="post" action="#">
+                    <form class="contact-form" method="post" action="{{asset('ordercart/send')}}">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-text-wrap clearfix">
                             <div class="contact-name">
                                 <label></label>
                                 <input type="text" placeholder="Name" aria-required="true" size="30" value=""
-                                    name="author" id="author">
+                                    name="name" id="name">
                             </div>
                             <div class="contact-email">
                                 <label></label>
@@ -55,7 +78,7 @@
                             <div class="contact-subject">
                                 <label></label>
                                 <input type="text" placeholder="Address" aria-required="true" size="30" value=""
-                                    name="subject" id="subject">
+                                    name="address" id="address">
                             </div>
                         </div>
                         <div class="contact-message clearfix">
@@ -63,7 +86,8 @@
                             <textarea class="" tabindex="4" placeholder="Message" name="message" required></textarea>
                         </div>
                         <div class="form-submit">
-                            <button class="contact-submit">Order</button>
+                            <input type="submit" class="contact-submit" value="Order">
+                            <!-- <button class="contact-submit">Order</button> -->
                         </div>
                     </form>
                 </div><!-- /.wrap-contact -->

@@ -12,7 +12,7 @@
 */
 
 // Route::get('/haizz', function () {
-//     return view('partials.order-product');
+//     return view('partials.thanks');
 // });
 Route::get('product/{type}', [ 
     'as'=> 'productlist',
@@ -45,6 +45,14 @@ Route::get('/del-to-cart/{id}',[
 Route::get('ordercart',[ 
     'as'=> 'ordercard',
     'uses'=>'Pages\\NonAuths\\CartController@getCart'] );
+Route::post('/ordercart/send',[ 
+    'as'=> 'send',
+    'uses'=>'Pages\\NonAuths\\CartController@sendCart'] );
+
+Route::get('thanks',[ 
+    'as'=> 'thanks',
+    'uses'=>'Pages\\NonAuths\\CartController@CamOn'] );
+
 Route::get('home', [ 
     'as'=> 'home',
     'uses'=>'Pages\\NonAuths\\HomeController@getIndex']);
