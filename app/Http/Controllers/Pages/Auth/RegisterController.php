@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\SendForgot;
+use Illuminate\Support\Facades\Mail;
+
 class RegisterController extends AuthController
 {
     //
@@ -48,4 +51,54 @@ class RegisterController extends AuthController
         $users->save();
         return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }
+    public function getForgot() {
+        return view('partials.forgot-pass');
+    }
+    public function postForgot(Request $req) {
+        // dd($req->all());
+        $users = User::whereEmail($req->email)->first();
+
+        if($users == null){
+            return redirect()->back()->with(['flag'=>'danger','message'=>'Email not exists']);
+        }
+        // $users = Sentinel::findById($users->id);
+        // $reminder = Reminder::exists($users) ? : Reminder::create($users);
+        // $this->sendEmail($users, $reminder->code);
+        $data=array(
+            'email'=>$req->input('email'),
+            'name' => $users->full_name,
+            'id' => $users->id,
+    );
+    // dd($data);
+    Mail::to($req->input('email'))->send(new SendForgot($data));
+
+        return redirect()->back()->with(['flag'=>'danger','message'=>'Reset code sent to your email.']);
+    }
+
+    public function getReset($id) {
+        $users = User::find($id);
+        return view('partials.resetpass',compact('users'));
+    }
+
+    public function postReset(Request $req,$id) {
+        $users = User ::find($id);
+        $this->validate($req,
+        [
+            'password' =>'required',
+            're_password' => 'required|same:password'       
+
+        ],
+        [
+            
+            'password.required'=> 'Hãy nhập mật khẩu',
+            're_password.required'=> 'Hãy nhập lại mật khẩu',
+            're_password.same' => 'Mật khẩu không giống nhau'
+        ]);
+
+        $users-> password = Hash::make($req-> password);
+        $users -> save();
+        return redirect('login')->with(['flag'=>'succes','message'=>'Reset password Success']);
+    }
+   
 }
+

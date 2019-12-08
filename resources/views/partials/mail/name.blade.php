@@ -12,22 +12,25 @@
             <b style='font-size:25px'>Tên Sản Phẩm : </b>
             <i style='font-size:18px'>{{$item['item']['ProName']}}</i>
             &nbsp;
-            <b>Giá:</b>
+
+
+        </li>
+        <li><b>Giá:</b>
             <i>@if($item['item']['promotion_price']==0)
                 {{$item['item']['unit_price']}}@else{{$item['item']['promotion_price']}}@endif VND</i>
-
         </li>
         @endforeach
         &nbsp;
-        <b style='font-size:18px'>Địa chỉ: </b>
-        <i>{{$data['address']}}</i><br>
+        <li><b style='font-size:18px'>Địa chỉ: </b>
+            <i>{{$data['address']}}</i><br></li>
         &nbsp;
-        
-        <b style='font-size:18px'>Với lời nhắn: </b>
-        <i>{{$data['message']}}</i>
+        <li>
+            <b style='font-size:18px'>Với lời nhắn: </b>
+            <i>{{$data['message']}}</i></li>
         <li><b style="font-size:30px">Tổng tiền: {{$data['totalPrice']}}</b> </li>
     </ul>
     <p>Cảm ơn bạn đã tin dùng sản phẩm của chúng tôi</p>
+    <p class="copyright text-center"> &copy; Copyright @2019 <a href="{{route('home')}}">Motorcycle | Shop</a></p>
 </body>
 
 </html>

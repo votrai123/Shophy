@@ -89,6 +89,22 @@ Route::post('register', [
 //     'as'=> 'admin',
 //     'uses'=>'Pages\\Auth\\HomeAdminController@getAdminPage']);
 // , 'middleware'=>'adminLogin'
+
+Route::get('forgotpass', [ 
+    'as'=> 'forgot-pass',
+    'uses'=>'Pages\\Auth\\RegisterController@getForgot']);
+
+Route::post('forgotpass', [ 
+    'as'=> 'forgot-pass',
+    'uses'=>'Pages\\Auth\\RegisterController@postForgot']);
+
+Route::get('/resetpass/{id}', [ 
+    'as'=> 'reset-pass',
+    'uses'=>'Pages\\Auth\\RegisterController@getReset']);
+Route::post('/resetpass1/{id}', [ 
+    'as'=> 'reset-pass1',
+    'uses'=>'Pages\\Auth\\RegisterController@postReset']);
+
 Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
     Route::get('admin', 'Pages\\Auth\\AdminController\\HomeAdminController@getAdminPage');
     Route::group(['prefix' => 'products', 'as'=>'products'], function () {

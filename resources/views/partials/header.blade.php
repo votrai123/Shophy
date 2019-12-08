@@ -18,12 +18,18 @@
                 </li>
                 
                 @if(Auth::check()==true)
-                <li class="active">
-                    <div class="submenu">Chào!!{{Auth::user()->full_name}}</div>
-                </li>
-                <li class="active">
+                
+                    <li>
+                    Chào!!{{Auth::user()->full_name}}
+                    <!-- <ul class="submenu">
+                    <li>asdahsgdsahgdgh</li>
+                    <li >
+                    </li>
+                    </ul> -->
                     <a class="submenu" href="{{asset('logout')}}">Logout</a>
+                    
                 </li>
+                    
                 @else
                 <li class="box-login">
                     <a class="icon_login" href="{{route('dang-nhap')}}"></a>

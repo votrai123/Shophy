@@ -61,6 +61,7 @@
                 </div>
             </div>
             @endif
+            @if(Auth::user()==false)
             <div class="row">
                 <div class="wrap-contact style2">
                     <form class="contact-form" method="post" action="{{asset('ordercart/send')}}">
@@ -92,6 +93,7 @@
                     </form>
                 </div><!-- /.wrap-contact -->
             </div><!-- /.row -->
+            @endif
         </div><!-- /.container -->
     </section><!-- /.flat-row -->
 </div>
