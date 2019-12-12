@@ -45,6 +45,12 @@ Route::get('/del-to-cart/{id}',[
 Route::get('ordercart',[ 
     'as'=> 'ordercard',
     'uses'=>'Pages\\NonAuths\\CartController@getCart'] );
+
+Route::post('postordercart',[ 
+    'as'=> 'postordercart',
+    'uses'=>'Pages\\NonAuths\\CartController@postCart'] );
+
+
 Route::post('/ordercart/send',[ 
     'as'=> 'send',
     'uses'=>'Pages\\NonAuths\\CartController@sendCart'] );
@@ -104,6 +110,8 @@ Route::get('/resetpass/{id}', [
 Route::post('/resetpass1/{id}', [ 
     'as'=> 'reset-pass1',
     'uses'=>'Pages\\Auth\\RegisterController@postReset']);
+
+
 
 Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
     Route::get('admin', 'Pages\\Auth\\AdminController\\HomeAdminController@getAdminPage');

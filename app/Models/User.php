@@ -41,4 +41,7 @@ class User extends Authenticatable
     public function comment_product() {
         return $this->hasMany('App\Models\Comment','iduser','id');
     }
+    public function bill() {
+        return $this->hasMany('App\Models\Bill','id_users','id');
+    }
 }

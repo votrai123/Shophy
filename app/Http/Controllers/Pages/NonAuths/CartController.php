@@ -9,8 +9,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Products;
 use App\Models\Cart;
+use App\Models\Bill;
+use App\Models\BillDetail;
 use App\Mail\SendMail;
 use Session;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends NonAuthController
 {
@@ -75,10 +78,32 @@ class CartController extends NonAuthController
         
         Mail::to($req->input('email'))->send(new SendMail($data));
         // dd('kamsmhdkjashdkjas');
+        Session::forget('cart');
         return redirect('/thanks');
         
     }
     public function CamOn() {
         return view('partials.thanks');
+    }
+
+    public function postCart(Request $req) {
+        $cart = Session::get('cart');
+        // dd($cart);
+        $bill = new Bill;
+        $bill->id_users = Auth::user()->id;
+        $bill->date_order = date('Y-m-d');
+        $bill->total = $cart->totalPrice;
+        $bill->note = $req->message;
+        $bill->save();
+        foreach ($cart->items as $key => $value) {
+            $bill_detail= new BillDetail;
+            $bill_detail->id_bill= $bill->id;
+            $bill_detail->id_product= $key;
+            $bill_detail->quantity=$value['qty'];
+            $bill_detail->unit_price=($value['price']/$value['qty']);
+            $bill_detail->save();
+        }
+        Session::forget('cart');
+        return redirect('/thanks');
     }
 }

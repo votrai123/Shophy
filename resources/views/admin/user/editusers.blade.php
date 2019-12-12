@@ -57,6 +57,7 @@
                     type="email"
                     value="{{$users -> email}}"
                     class="form-control validate"
+                    readonly="readonly"
                   />
                   <div id="existedEmail" style="color:red; display:none">Email này đã được dùng</div>
                 </div>

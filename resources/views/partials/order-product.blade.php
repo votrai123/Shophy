@@ -93,6 +93,22 @@
                     </form>
                 </div><!-- /.wrap-contact -->
             </div><!-- /.row -->
+            @else
+            <div class="row">
+                <div class="wrap-contact style2">
+                    <form class="contact-form" method="post" action="{{asset('postordercart')}}">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <div class="contact-message clearfix">
+                            <label></label>
+                            <textarea class="" tabindex="4" placeholder="Message" name="message" required></textarea>
+                        </div>
+                        <div class="form-submit">
+                            <input type="submit" class="contact-submit" value="Order">
+                            <!-- <button class="contact-submit">Order</button> -->
+                        </div>
+                    </form>
+                </div><!-- /.wrap-contact -->
+            </div><!-- /.row -->
             @endif
         </div><!-- /.container -->
     </section><!-- /.flat-row -->

@@ -17,7 +17,9 @@ class Products extends Model
     public function comment_product() {
         return $this->hasMany('App\Models\Comment','idproduct','id');
     }  
-    
+    public function bill_detail() {
+        return $this->hasMany('App\Models\BillDetail','id_product','id');
+    }
     protected $fillable = [
         'ProName'
     ];
