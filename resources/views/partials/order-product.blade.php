@@ -93,6 +93,7 @@
                     </form>
                 </div><!-- /.wrap-contact -->
             </div><!-- /.row -->
+<<<<<<< HEAD
             @else
             <div class="row">
                 <div class="wrap-contact style2">
@@ -109,6 +110,8 @@
                     </form>
                 </div><!-- /.wrap-contact -->
             </div><!-- /.row -->
+=======
+>>>>>>> aaaaaaaaaaa
             @endif
         </div><!-- /.container -->
     </section><!-- /.flat-row -->

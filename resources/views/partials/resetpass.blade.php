@@ -29,7 +29,10 @@
             @endif
             @if (Session::has('thongbao'))
             <div class="{{Session::get('flag')}}">{{Session::get('thongbao')}}</div>
+<<<<<<< HEAD
             <div><a href="{{route('dang-nhap')}}">return login</a></div>
+=======
+>>>>>>> aaaaaaaaaaa
             @endif
             @if(Session::has('thongbao')==false)
             <input type="hidden" name="_token" value="{{csrf_token()}}">
