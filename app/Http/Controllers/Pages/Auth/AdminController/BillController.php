@@ -29,7 +29,7 @@ class BillController extends AuthController
                 <td>".$bdone->total."</td>
                 <td>".$bdone->users->address."</td>
                 <td>";
-                if($bdone->status==1) {echo "done";} 
+                if($bdone->status==1) {echo "Done";} 
                 else { echo "Pendent" ;} "</td>";
                 echo "
                 <td>
@@ -64,7 +64,7 @@ class BillController extends AuthController
         $detail = BillDetail::where('id_bill',$id)->get();
         $sl=1;
         foreach ($detail as $dt) {
-            echo "STT:".$sl."<br>Tên sản phẩm:".$dt->id_product."<br>Số lượng:".$dt->quantity."<br>";
+            echo "STT:".$sl."<br>Mã sản phẩm:".$dt->id_product."<br>Số lượng:".$dt->quantity."<br>";
             echo "_____________________________________________<br>";
             $sl++;
         }

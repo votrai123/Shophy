@@ -47,7 +47,7 @@
                                 <td>{{$bll->users->email}}</td>
                                 <td>{{$bll->total}}</td>
                                 <td>{{$bll->users->address}}</td>
-                                <td>@if($bll->status==1)done @else Pendent @endif</td>
+                                <td>@if($bll->status==1) Done @else Pendent @endif</td>
                                 <td>
                                     <a class="tm-product-delete-link">
                                         <i class="far fa-credit-card tm-product-delete-icon"
