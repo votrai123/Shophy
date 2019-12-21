@@ -2,7 +2,7 @@ var selected_id=null;
 var selected_id1=null;
 var selected_id2=null;
 var selected_id3 =null;
-// var selected_id4 =null;
+var selected_id4 =null;
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -56,6 +56,46 @@ function deletecomment() {
     });
 // console.log('abcd')
 }
+
+function deletebill() {
+    
+    $.post(`/admin/bills/delbill/${selected_id4}`,
+    {
+        
+    },
+    function(data, status){
+    //   alert("Data: " + data + "\nStatus: " + status);
+    location.reload();
+    });
+// console.log('abcd')
+}
+
+function donebill() {
+    
+    $.post(`/admin/bills/donebill/${selected_id4}`,
+    {
+        
+    },
+    function(data, status){
+    //   alert("Data: " + data + "\nStatus: " + status);
+    location.reload();
+    });
+// console.log('abcd')
+}
+
+function detailbill(id) {
+    $.post(`/admin/bills/detail/${id}`,
+    {
+        
+    },
+    function(data, status){
+    //   alert("Data: " + data + "\nStatus: " + status);
+    // location.reload();
+    $("#aaa").html(data);
+    });
+// console.log('abcd')
+}
+
 function insertcomment(id) {
     $.post(`/comment/${id}`,
     {
@@ -81,6 +121,9 @@ function setidcomment(id) {
 function setidpro(id) {
     selected_id1=id;
 }
+function setidbill(id) {
+    selected_id4=id;
+}
 $('#unit_promotion').on('input', function (e) {
     var inputpromotion = $('#unit_promotion').val();
     var inputunitprice = $('#unit_price').val();
@@ -105,6 +148,7 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+// ajax list user
 $(document).ready(function() {
     $("#role").change(function() {
         var role = $(this).val();
@@ -113,6 +157,21 @@ $(document).ready(function() {
             //  alert(data);
             // alert(role);
             $("#users").html(data);
+         });
+        
+    });
+ });
+
+// ajax list bill
+
+$(document).ready(function() {
+    $("#status").change(function() {
+        var status = $(this).val();
+        // alert(status);
+         $.get("/admin/bills/ajax/status/"+status,function(data) {
+        //     //  alert(data);
+        //     // alert(role);
+            $("#listbills").html(data);
          });
         
     });

@@ -17,20 +17,17 @@
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
 
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" href="{{asset('admin/bills/listbill')}}">
                                 <i class="far fa-file-alt"></i>
-                                <span>
-                                    Reports <i class="fas fa-angle-down"></i>
-                                </span>
+                                    Bills 
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Daily Report</a>
                                 <a class="dropdown-item" href="#">Weekly Report</a>
                                 <a class="dropdown-item" href="#">Yearly Report</a>
-                            </div>
+                            </div> -->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{asset('admin/products/listproducts')}}">

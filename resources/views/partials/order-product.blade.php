@@ -25,7 +25,7 @@
                     @if(session('thongbao'))
                     <div class="alert alert-success">{{session('thongbao')}}</div>
                     @endif
-                    <table>
+                    <table border="1">
                         <tr>
                             <th>PICTURE</th>
                             <th>PRODUCT NAME</th>
@@ -48,7 +48,7 @@
                         </tr>
 
                         @endforeach
-                    </table>
+                    <td colspan="5">
                     <ul class="woocommerce-mini-cart cart_list product_list_widget">
                         <div class="product-item">
                             <div class="add-to-cart text-center title">Tổng tiền: <ins><span
@@ -56,7 +56,8 @@
                             </div>
                         </div>
                     </ul>
-
+                    </td>
+                    </table>
 
                 </div>
             </div>
@@ -93,7 +94,6 @@
                     </form>
                 </div><!-- /.wrap-contact -->
             </div><!-- /.row -->
-<<<<<<< HEAD
             @else
             <div class="row">
                 <div class="wrap-contact style2">
@@ -110,8 +110,6 @@
                     </form>
                 </div><!-- /.wrap-contact -->
             </div><!-- /.row -->
-=======
->>>>>>> aaaaaaaaaaa
             @endif
         </div><!-- /.container -->
     </section><!-- /.flat-row -->

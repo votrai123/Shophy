@@ -150,4 +150,12 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
 
         Route::post('delcategorys/{id}', 'Pages\\Auth\\AdminController\\AdminCategorys@postDelcategory');
     });
+    Route::group(['prefix' => 'bills'], function () {
+        Route::get('listbill','Pages\\Auth\\AdminController\\BillController@getListBill');
+        Route::get('ajax/status/{status}', 'Pages\\Auth\\AdminController\\BillController@getDoneorNot');
+        Route::post('delbill/{id}','Pages\\Auth\\AdminController\\BillController@postDelBill');
+        
+        Route::post('donebill/{id}','Pages\\Auth\\AdminController\\BillController@postDoneBill');
+        Route::post('detail/{id}','Pages\\Auth\\AdminController\\BillController@postDetailBill');
+    });
 });

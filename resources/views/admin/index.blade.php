@@ -38,6 +38,7 @@
     <!-- https://getbootstrap.com/ -->
     <script src="{{asset('admin/js/tooplate-scripts.js')}}"></script>
     <script src="{{asset('admin/js/deletecategory.js')}}"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script>
         Chart.defaults.global.defaultFontColor = 'white';
         let ctxLine,
