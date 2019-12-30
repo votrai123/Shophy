@@ -198,7 +198,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Bạn có muốn xóa account này không?</p>
+                                            <p>Bạn có muốn xóa comment này không?</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" id="deleteuser" class="btn btn-primary"
